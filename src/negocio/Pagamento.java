@@ -56,7 +56,8 @@ public class Pagamento {
 	}
 
 	public String toString() {
-		return "Pagamento [numCartao=" + numCartao + ", validade=" + validade + "]";
+		return "Número do cartão: " + numCartao +
+				"\nValidade: " + validade;
 	}
 	
 	
