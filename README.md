@@ -9,6 +9,8 @@ Esdras de Sousa Nogueira (https://github.com/Edzada)
 
 Filipe Bressanelli Azevedo Filho (https://github.com/fbressa)
 
+José Vinicius Alvares Soares de Queiroz 
+
 ## CLONANDO O PROJETO LOCALMENTE:
 Após ter instalado o git abra o terminal de comando e clone o projeto (git clone https://github.com/Edzada/Trabalho_OO.git) ;
 
