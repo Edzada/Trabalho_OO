@@ -69,7 +69,7 @@ public abstract class Usuario {
 	}
 
 	public String listarPastas() {
-		String saida = ">>>>>> Lista de Pastas <<<<<<";
+		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
 
 		for(int i = 0; i < numPastas; i++) {
 			System.out.println(i);
