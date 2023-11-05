@@ -44,7 +44,6 @@ public class Pasta {
 		this.numNotas = numNotas;
 	}
 
-	@Override
 	public String toString() {
 		return "Pasta [tituloPasta=" + tituloPasta + ", dtCriacaoPasta=" + dtCriacaoPasta + ", numNotas=" + numNotas
 				+ "]";
