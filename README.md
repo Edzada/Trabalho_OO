@@ -1,2 +1,2 @@
 # Trabalho_OO
-Trabalho de Orientação a Objetos 
+Trabalho realizado para a matéria de Orientação a Objetos na Universidade de Brasília.
