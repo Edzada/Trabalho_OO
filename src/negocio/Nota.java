@@ -36,8 +36,9 @@ public class Nota {
 	}
 
 	public String toString() {
-		return "Nota [tituloNota=" + tituloNota + ", dtCriacaoNota=" + dtCriacaoNota + ", conteudoNota=" + conteudoNota
-				+ "]";
+		return "Título: " + tituloNota +
+				"\nData de criação: " + dtCriacaoNota +
+				"\nConteúdo: " + conteudoNota;
 	}
 
 	

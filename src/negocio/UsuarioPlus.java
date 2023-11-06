@@ -3,7 +3,7 @@ package negocio;
 public class UsuarioPlus extends Usuario{
 	private Pagamento cartao;
 	
-	public Usuario_Plus(String n, String d, String nU, String e, String s, Pagamento c) {
+	public UsuarioPlus(String n, String d, String nU, String e, String s, Pagamento c) {
 		super(n, d, nU, e, s);
 		this.cartao = c;
 		this.qtdNotas = 1500;
@@ -20,5 +20,7 @@ public class UsuarioPlus extends Usuario{
 	public void setCartao(Pagamento cartao) {
 		this.cartao = cartao;
 	}
+
+
 	
 }

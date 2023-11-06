@@ -62,10 +62,21 @@ public abstract class Usuario {
 
 
 	public String toString() {
-		return "Usuario [nome=" + nome + ", nomeUsuario=" + nomeUsuario + ", qtdNotas=" + qtdNotas + ", qtdPastas="
-				+ qtdPastas + "]";
+		return "Nome: " + nome +
+				"\nNome de Usuário: " + nomeUsuario +
+				"\nQuantidade de Notas: " + qtdNotas +
+				"\nQuantidade de Pastas: " + qtdPastas;
 	}
 
+	public String listarPastas() {
+		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
 
+		for(int i = 0; i < numPastas; i++) {
+			System.out.println(i);
+			saida = saida + "\n" + pastas[i].toString();
+		}
+
+		return saida;
+	}
 	
 }

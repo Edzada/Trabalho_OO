@@ -9,6 +9,8 @@ public class Pasta {
 	public Pasta(String t, String d) {
 		this.tituloPasta = t;
 		this.dtCriacaoPasta = d;
+		this.notas = new Nota[1500];
+		this.numNotas = 0;
 		
 	}
 
@@ -45,8 +47,20 @@ public class Pasta {
 	}
 
 	public String toString() {
-		return "Pasta [tituloPasta=" + tituloPasta + ", dtCriacaoPasta=" + dtCriacaoPasta + ", numNotas=" + numNotas
-				+ "]";
+		return "Título: " + tituloPasta +
+				"\nData de criação: " + dtCriacaoPasta +
+				"\nNúmero de notas: " + numNotas;
+	}
+
+	public String listarNotas() {
+		String saida = ">>>>>> Lista de Notas <<<<<<\n";
+
+		for(int i = 0; i < numNotas; i++) {
+			System.out.println(i);
+			saida = saida + "\n" + notas[i].getTituloNota();
+		}
+
+		return saida;
 	}
 	
 	
