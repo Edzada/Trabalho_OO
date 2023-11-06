@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Pasta {
 	// Declara variáveis privadas
@@ -69,6 +70,7 @@ public class Pasta {
 
 		return saida;
 	}
+<<<<<<< HEAD
 	//Método de filtraNotas()
 	public String filtrarNotas(String dtCriacaoNota){
 		// Variável para armazenar as notas filtradas
@@ -83,6 +85,36 @@ public class Pasta {
 			}
 		}
 		return notasFiltradas; // Retorna a lista de notas filtradas
+=======
+
+	public boolean acrescentarNota(Nota n) {
+		if(numNotas == 1499) {
+			return false;
+		} else {
+			notas.add(n);
+			numNotas++;
+			return true;
+		}
+	}
+
+	public String pesquisarNota(String tituloNota) {
+		for(int i = 0; i < numNotas; i++) {
+			if(Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
+				return notas.get(i).toString();
+			}
+		}
+		return null;
+	}
+
+	public boolean deletarNota(String tituloNota) {
+		for(int i =0; i < numNotas; i++) {
+			if (Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
+				notas.remove(i);
+				return true;
+			}
+		}
+		return false;
+>>>>>>> f0e34a4941068d96a4e46fd971adf4d466769f92
 	}
 	
 }
