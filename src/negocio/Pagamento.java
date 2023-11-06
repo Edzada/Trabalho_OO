@@ -60,6 +60,16 @@ public class Pagamento {
 				"\nValidade: " + validade;
 	}
 	
+	public boolean excluirCartao() {
+		// Verifica se o cartão existe
+		if (this.numCartao == null) {
+			return false;
+		}
+		// Define o cartão como excluído
+		this.numCartao = null;
 	
+		// Retorna true para indicar que o cartão foi excluído com sucesso
+		return true;
+	}
 	
 }
