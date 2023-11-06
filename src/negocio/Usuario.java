@@ -78,5 +78,7 @@ public abstract class Usuario {
 
 		return saida;
 	}
+
+	public abstract boolean atribuirPasta(Pasta p);
 	
 }
