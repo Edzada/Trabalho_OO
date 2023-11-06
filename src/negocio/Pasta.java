@@ -70,7 +70,6 @@ public class Pasta {
 
 		return saida;
 	}
-<<<<<<< HEAD
 	//Método de filtraNotas()
 	public String filtrarNotas(String dtCriacaoNota){
 		// Variável para armazenar as notas filtradas
@@ -85,7 +84,6 @@ public class Pasta {
 			}
 		}
 		return notasFiltradas; // Retorna a lista de notas filtradas
-=======
 
 	public boolean acrescentarNota(Nota n) {
 		if(numNotas == 1499) {
@@ -114,7 +112,6 @@ public class Pasta {
 			}
 		}
 		return false;
->>>>>>> f0e34a4941068d96a4e46fd971adf4d466769f92
 	}
 	
 }
