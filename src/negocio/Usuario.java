@@ -106,4 +106,26 @@ public abstract class Usuario {
 		return false;
 	}
 	
+	public String filtrarPastas(String dtCriacaoPasta) {
+
+		// Verifica se a data de criação é válida
+		if (dtCriacaoPasta == null || dtCriacaoPasta.isEmpty()) {
+		  return "A data de criação não é válida.";
+		}
+	  
+		// Cria uma lista para armazenar as pastas filtradas
+		List<Pasta> pastasFiltradas = new ArrayList<>();
+	  
+		// Itera sobre todas as pastas do usuário
+		for (Pasta pasta : this.pastas) {
+	  
+		  // Verifica se a data de criação da pasta corresponde à data de criação fornecida
+		  if (pasta.dtCriacaoPasta.equals(dtCriacaoPasta)) {
+			pastasFiltradas.add(pasta);
+		  }
+		}
+	  
+		// Retorna uma string contendo as pastas filtradas
+		return pastasFiltradas.toString();
+	  }
 }
