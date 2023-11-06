@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Pasta {
 	private String tituloPasta;
@@ -64,6 +65,34 @@ public class Pasta {
 
 		return saida;
 	}
-	
+
+	public boolean acrescentarNota(Nota n) {
+		if(numNotas == 1499) {
+			return false;
+		} else {
+			notas.add(n);
+			numNotas++;
+			return true;
+		}
+	}
+
+	public String pesquisarNota(String tituloNota) {
+		for(int i = 0; i < numNotas; i++) {
+			if(Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
+				return notas.get(i).toString();
+			}
+		}
+		return null;
+	}
+
+	public boolean deletarNota(String tituloNota) {
+		for(int i =0; i < numNotas; i++) {
+			if (Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
+				notas.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

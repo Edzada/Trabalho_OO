@@ -3,6 +3,7 @@ import negocio.*;
 
 import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Dados {
 	private ArrayList<Usuario> usuarios;
@@ -75,5 +76,15 @@ public class Dados {
 		}
 
 		numUsuarios = 10;
+	}
+
+	public boolean deletarUsuario(String nome) {
+		for(int i = 0; i < numUsuarios; i++) {
+			if(Objects.equals(usuarios.get(i).getNome(), nome)) {
+				usuarios.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -1,6 +1,7 @@
 package negocio;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Usuario {
 	protected String nome;
@@ -95,6 +96,14 @@ public abstract class Usuario {
         return numPastas == qtdPastas-1;
 	}
 
-
+	public boolean deletarPasta(String tituloPasta) {
+		for(int i = 0; i  < numPastas; i++) {
+			if(Objects.equals(pastas.get(i).getTituloPasta(), tituloPasta)) {
+				pastas.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
