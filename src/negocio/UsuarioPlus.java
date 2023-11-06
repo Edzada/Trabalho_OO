@@ -21,14 +21,4 @@ public class UsuarioPlus extends Usuario{
 		this.cartao = cartao;
 	}
 
-	@Override
-	public boolean atribuirPasta(Pasta p) {
-		if(numPastas == qtdPastas-1) {
-			return false;
-		} else {
-			this.pastas[numPastas] = p;
-			numPastas++;
-			return true;
-		}
-	}
 }
