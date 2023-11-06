@@ -14,7 +14,7 @@ public abstract class Usuario {
 	protected ArrayList<Pasta> pastas;
 	protected int numPastas;
 	
-	
+	// Construtor
 	public Usuario(String n, String d, String nU, String e, String s) {
 		this.nome = n;
 		this.dtNascimento = d;
@@ -22,7 +22,7 @@ public abstract class Usuario {
 		this.email = e;
 		this.senha = s;
 	}
-
+	// Métodos getters e setters
 	public String getNome() {
 		return nome;
 	}
@@ -63,27 +63,27 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
-
+	//  Método toString para representar o objeto Usuario como uma string
 	public String toString() {
 		return "Nome: " + nome +
 				"\nNome de Usuário: " + nomeUsuario +
 				"\nQuantidade de Notas: " + qtdNotas +
 				"\nQuantidade de Pastas: " + qtdPastas;
 	}
-
+	 // Método listarPastas para exibir todas as pastas do usuário
 	public String listarPastas() {
 		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
 
 		for(int i = 0; i < numPastas; i++) {
 			System.out.println(i);
-			saida = saida + "\n" + pastas.get(i).toString();
+			saida = saida + "\n" + pastas.get(i).toString(); 
 		}
 
 		return saida;
 	}
-
+	// Método atribuirPasta para adicionar uma nova pasta ao usuário
 	public boolean atribuirPasta(Pasta p) {
-		if(verificarLimitePastas()) {
+		if(verificarLimitePastas()) {  // Verifica se há limite de pastas
 			return false;
 		} else {
 			pastas.add(p);
