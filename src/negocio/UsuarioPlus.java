@@ -23,7 +23,7 @@ public class UsuarioPlus extends Usuario{
 
 	@Override
 	public boolean atribuirPasta(Pasta p) {
-		if(numPastas = qtdPastas-1) {
+		if(numPastas == qtdPastas-1) {
 			return false;
 		} else {
 			this.pastas[numPastas] = p;
