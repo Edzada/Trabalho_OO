@@ -1,15 +1,17 @@
 package negocio;
 
+import java.util.ArrayList;
+
 public class Pasta {
 	private String tituloPasta;
 	private String dtCriacaoPasta;
-	private Nota[] notas;
+	private ArrayList<Nota> notas;
 	private int numNotas;
 	
 	public Pasta(String t, String d) {
 		this.tituloPasta = t;
 		this.dtCriacaoPasta = d;
-		this.notas = new Nota[1500];
+		this.notas = new ArrayList<>(1500);
 		this.numNotas = 0;
 		
 	}
@@ -30,11 +32,11 @@ public class Pasta {
 		this.dtCriacaoPasta = dtCriacaoPasta;
 	}
 
-	public Nota[] getNotas() {
+	public ArrayList<Nota> getNotas() {
 		return notas;
 	}
 
-	public void setNotas(Nota[] notas) {
+	public void setNotas(ArrayList<Nota> notas) {
 		this.notas = notas;
 	}
 
@@ -57,7 +59,7 @@ public class Pasta {
 
 		for(int i = 0; i < numNotas; i++) {
 			System.out.println(i);
-			saida = saida + "\n" + notas[i].getTituloNota();
+			saida = saida + "\n" + notas.get(i).toString();
 		}
 
 		return saida;

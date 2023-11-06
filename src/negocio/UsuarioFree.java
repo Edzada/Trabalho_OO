@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.ArrayList;
+
 public class UsuarioFree extends Usuario{
 	private String anuncio;
 	
@@ -7,7 +9,7 @@ public class UsuarioFree extends Usuario{
 		super(n, d, nU, e, s);
 		this.qtdNotas = 1500;
 		this.qtdPastas = 50;
-		this.pastas = new Pasta[50];
+		this.pastas = new ArrayList<>(50);
 		this.numPastas = 0;
 	}
 

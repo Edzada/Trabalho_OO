@@ -2,38 +2,39 @@ package dados;
 import negocio.*;
 
 import java.lang.foreign.ValueLayout;
+import java.util.ArrayList;
 
 public class Dados {
-	private Usuario[] usuarios;
+	private ArrayList<Usuario> usuarios;
 	private int numUsuarios = 0;
 
 	public Dados() {
-		this.usuarios = new Usuario[200];
+		this.usuarios = new ArrayList<>(200);
 	}
 
-	public Usuario[] getUsuario() {
+	public ArrayList<Usuario> getUsuario() {
 		return usuarios;
 	}
 
 	public Usuario getUsuario(int i) {
-		return usuarios[i];
+		return usuarios.get(i);
 	}
 
 	public String[] getNomeUsuarios() {
 		String[] s = new String[numUsuarios];
 		for(int i = 0; i < numUsuarios; i++) {
-			s[i] = usuarios[i].getNome();
+			s[i] = usuarios.get(i).getNome();
 		}
 
 		return s;
 	}
 
-	public void setUsuarios(Usuario[] usuarios) {
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
 	public void setUsuario(int i, Usuario u) {
-		this.usuarios[i] = u;
+		this.usuarios.set(i, u);
 	}
 
 	public int getNumUsuarios() {
@@ -49,23 +50,28 @@ public class Dados {
 
 		for(int i = 0; i < numUsuarios; i++) {
 			System.out.println(i);
-			saida = saida + "\n" + usuarios[i].getNome();
+			saida = saida + "\n" + usuarios.get(i).getNome();
 		}
 
 		return saida;
 	}
 
 	public void preencherDados() {
-		for(int i = 0; i < 5; i++) {
+		int i;
+		for(i = 0; i < 5; i++) {
 			String s = String.valueOf(i);
-			usuarios[i] = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
+			Usuario user = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
 								"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s));
+			usuarios.add(i, user);
 		}
 
-		for(int i = 5; i < 10; i++) {
+		for(i = 5; i < 10; i++) {
 			String s = String.valueOf(i);
-			usuarios[i] = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
-					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), null);
+			Pagamento cartao = new Pagamento("Email".concat(s), "NumCartao".concat(s),
+					"Validade".concat(s), 123, "Pais".concat(s));
+			Usuario user = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
+					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
+			usuarios.add(i, user);
 		}
 
 		numUsuarios = 10;

@@ -1,4 +1,6 @@
 package negocio;
+import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Usuario {
 	protected String nome;
@@ -8,7 +10,7 @@ public abstract class Usuario {
 	protected String senha;
 	protected int qtdNotas;
 	protected int qtdPastas;
-	protected Pasta[] pastas;
+	protected ArrayList<Pasta> pastas;
 	protected int numPastas;
 	
 	
@@ -73,20 +75,26 @@ public abstract class Usuario {
 
 		for(int i = 0; i < numPastas; i++) {
 			System.out.println(i);
-			saida = saida + "\n" + pastas[i].toString();
+			saida = saida + "\n" + pastas.get(i).toString();
 		}
 
 		return saida;
 	}
 
 	public boolean atribuirPasta(Pasta p) {
-		if(numPastas == qtdPastas-1) {
+		if(verificarLimitePastas()) {
 			return false;
 		} else {
-			this.pastas[numPastas] = p;
+			pastas.add(p);
 			numPastas++;
 			return true;
 		}
 	}
+
+	public boolean verificarLimitePastas() {
+        return numPastas == qtdPastas-1;
+	}
+
+
 	
 }

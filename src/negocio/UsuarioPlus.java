@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.ArrayList;
+
 public class UsuarioPlus extends Usuario{
 	private Pagamento cartao;
 	
@@ -8,7 +10,7 @@ public class UsuarioPlus extends Usuario{
 		this.cartao = c;
 		this.qtdNotas = 1500;
 		this.qtdPastas = 1500;
-		this.pastas = new Pasta[1500];
+		this.pastas = new ArrayList<>(1500);
 		this.numPastas = 0;
 		
 	}
