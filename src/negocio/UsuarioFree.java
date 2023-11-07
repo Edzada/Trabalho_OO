@@ -1,26 +1,33 @@
 package negocio;
 
-import java.util.ArrayList;
+import java.util.Arraylist;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class UsuarioFree extends Usuario{
-	private String anuncio;
-	
-	public UsuarioFree(String n, String d, String nU, String e, String s) {
-		super(n, d, nU, e, s);
-		this.qtdNotas = 1500;
-		this.qtdPastas = 50;
-		this.pastas = new ArrayList<>(50);
-		this.numPastas = 0;
-	}
+public class UsuarioFree extends Usuario {
+    private byte[] imagem; // Variável para armazenar a imagem em formato de matriz de bytes
 
-	public String getAnuncio() {
-		return anuncio;
-	}
+    public UsuarioFree(String n, String d, String nU, String e, String s) {
+        super(n, d, nU, e, s);
+        this.qtdNotas = 1500;
+        this.qtdPastas = 50;
+        this.pastas = new ArrayList<>(50);
+        this.numPastas = 0;
+    }
 
-	public void setAnuncio(String anuncio) {
-		this.anuncio = anuncio;
-	}
+    public byte[] getImagem() {
+        return imagem;
+    }
 
-	
-	
+    // Adicione um método para definir a imagem a partir de um caminho de arquivo
+    public void setImagem(String imagePath) throws IOException {
+        Path path = Path.of(imagePath);
+
+        if (Files.exists(path)) {
+            this.imagem = Files.readAllBytes(path);
+        } else {
+            throw new IOException("Arquivo de imagem não encontrado: " + imagePath);
+        }
+    }
 }
