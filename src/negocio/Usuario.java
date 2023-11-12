@@ -1,4 +1,5 @@
 package negocio;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -120,7 +121,7 @@ public abstract class Usuario {
 		for (Pasta pasta : this.pastas) {
 	  
 		  // Verifica se a data de criação da pasta corresponde à data de criação fornecida
-		  if (pasta.dtCriacaoPasta.equals(dtCriacaoPasta)) {
+		  if (pasta.getDtCriacaoPasta().equals(dtCriacaoPasta)) {
 			pastasFiltradas.add(pasta);
 		  }
 		}

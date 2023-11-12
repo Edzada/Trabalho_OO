@@ -1,6 +1,6 @@
 package dados;
-import negocio.*;
 
+import negocio.*;
 import java.lang.foreign.ValueLayout;
 import java.util.ArrayList;
 import java.util.List;
