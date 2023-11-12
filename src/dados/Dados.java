@@ -70,7 +70,7 @@ public class Dados {
 		for(i = 5; i < 10; i++) {
 			String s = String.valueOf(i);
 			Pagamento cartao = new Pagamento("Email".concat(s), "NumCartao".concat(s),
-					"Validade".concat(s), 123, "Pais".concat(s));
+					"Validade".concat(s), 123, "Pais".concat(s), 2000.00);
 			Usuario user = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
 					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
 			usuarios.add(i, user);

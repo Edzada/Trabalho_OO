@@ -6,13 +6,15 @@ public class Pagamento {
 	private String validade;
 	private int cvv;
 	private String pais;
+	private double limite;
 	
-	public Pagamento(String e, String nC, String v, int c, String p) {
+	public Pagamento(String e, String nC, String v, int c, String p, double l) {
 		this.email = e;
 		this.numCartao = nC;
 		this.validade = v;
 		this.cvv = c;
 		this.pais = p;
+		this.limite = l;
 	}
 
 	public String getEmail() {
@@ -53,6 +55,14 @@ public class Pagamento {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+
+	public double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(double limite) {
+		this.limite = limite;
 	}
 
 	public String toString() {

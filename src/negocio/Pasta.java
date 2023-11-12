@@ -71,19 +71,20 @@ public class Pasta {
 		return saida;
 	}
 	//Método de filtraNotas()
-	public String filtrarNotas(String dtCriacaoNota){
+	public String filtrarNotas(String dtCriacaoNota) {
 		// Variável para armazenar as notas filtradas
 		String notasFiltradas = "";
 
 		// Itera sobre a lista de notas
-		for (Nota nota : notas){
+		for (Nota nota : notas) {
 			// Verifica se a data de criação da nota corresponde a data de criação informada
-			if(nota.getDtCriacaoNota().equals(dtCriacaoNota)){
+			if (nota.getDtCriacaoNota().equals(dtCriacaoNota)) {
 				// Adiciona a nota filtrada a variável notasFiltradas
 				notasFiltradas += nota.toString() + "\n";
 			}
 		}
 		return notasFiltradas; // Retorna a lista de notas filtradas
+	}
 
 	public boolean acrescentarNota(Nota n) {
 		if(numNotas == 1499) {
