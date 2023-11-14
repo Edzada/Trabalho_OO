@@ -98,11 +98,15 @@ public class Pasta {
 
 	public String pesquisarNota(String tituloNota) {
 		for(int i = 0; i < numNotas; i++) {
-			if(Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
-				return notas.get(i).toString();
+			  // Certifique-se de que getTituloNota() e tituloNota não são nulos antes de realizar a comparação
+			  if (notas.get(i).getTituloNota() != null && tituloNota != null) {
+				if (notas.get(i).getTituloNota().equalsIgnoreCase(tituloNota)) {
+					// Certifique-se de que o método toString() da classe de nota está implementado corretamente
+					return notas.get(i).toString();
+				}
 			}
 		}
-		return null;
+		return null; // Retorna null se a nota não for encontrada
 	}
 
 	public boolean deletarNota(String tituloNota) {
