@@ -8,15 +8,12 @@ public class Pasta {
 	private String tituloPasta;
 	private String dtCriacaoPasta;
 	private ArrayList<Nota> notas;
-	private int numNotas;
 	
 	// Construtor	
 	public Pasta(String t, String d) {
 		this.tituloPasta = t;
 		this.dtCriacaoPasta = d;
 		this.notas = new ArrayList<>(1500);
-		this.numNotas = 0;
-		
 	}
 	
 	//Métodos getters e setters
@@ -45,24 +42,24 @@ public class Pasta {
 	}
 
 	public int getNumNotas() {
-		return numNotas;
+		return notas.size();
 	}
 
 	public void setNumNotas(int numNotas) {
-		this.numNotas = numNotas;
+		notas.ensureCapacity(numNotas);
 	}
 	//Método toString()
 	public String toString() {
 		return "Título: " + tituloPasta +
 				"\nData de criação: " + dtCriacaoPasta +
-				"\nNúmero de notas: " + numNotas;
+				"\nNúmero de notas: " + notas.size();
 	}
 	// Método listarNotas()
 	public String listarNotas() {
 		// Variável para armazenar a saída
 		String saida = ">>>>>> Lista de Notas <<<<<<\n";
 		// Itera sobre a lista de notas
-		for(int i = 0; i < numNotas; i++) {
+		for(int i = 0; i < notas.size(); i++) {
 			// Adiciona a representação `toString()` da nota à variável saida
 			System.out.println(i);
 			saida = saida + "\n" + notas.get(i).toString();
@@ -87,17 +84,16 @@ public class Pasta {
 	}
 
 	public boolean acrescentarNota(Nota n) {
-		if(numNotas == 1499) {
+		if(notas.size() >= 1500) {
 			return false;
 		} else {
 			notas.add(n);
-			numNotas++;
 			return true;
 		}
 	}
 
 	public String pesquisarNota(String tituloNota) {
-		for(int i = 0; i < numNotas; i++) {
+		for(int i = 0; i < notas.size(); i++) {
 			if(Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
 				return notas.get(i).toString();
 			}
@@ -106,7 +102,7 @@ public class Pasta {
 	}
 
 	public boolean deletarNota(String tituloNota) {
-		for(int i =0; i < numNotas; i++) {
+		for(int i =0; i < notas.size(); i++) {
 			if (Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
 				notas.remove(i);
 				return true;

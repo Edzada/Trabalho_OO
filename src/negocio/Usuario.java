@@ -13,7 +13,6 @@ public abstract class Usuario {
 	protected int qtdNotas;
 	protected int qtdPastas;
 	protected ArrayList<Pasta> pastas;
-	protected int numPastas;
 	
 	// Construtor
 	public Usuario(String n, String d, String nU, String e, String s) {
@@ -22,6 +21,7 @@ public abstract class Usuario {
 		this.nomeUsuario = nU;
 		this.email = e;
 		this.senha = s;
+		this.qtdNotas = 1500;
 	}
 	// Métodos getters e setters
 	public String getNome() {
@@ -75,7 +75,7 @@ public abstract class Usuario {
 	public String listarPastas() {
 		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
 
-		for(int i = 0; i < numPastas; i++) {
+		for(int i = 0; i < pastas.size(); i++) {
 			System.out.println(i);
 			saida = saida + "\n" + pastas.get(i).toString(); 
 		}
@@ -84,21 +84,16 @@ public abstract class Usuario {
 	}
 	// Método atribuirPasta para adicionar uma nova pasta ao usuário
 	public boolean atribuirPasta(Pasta p) {
-		if(verificarLimitePastas()) {  // Verifica se há limite de pastas
+		if(pastas.size() >= qtdPastas) {  // Verifica se há limite de pastas
 			return false;
 		} else {
 			pastas.add(p);
-			numPastas++;
 			return true;
 		}
 	}
 
-	public boolean verificarLimitePastas() {
-        return numPastas == qtdPastas-1;
-	}
-
 	public boolean deletarPasta(String tituloPasta) {
-		for(int i = 0; i  < numPastas; i++) {
+		for(int i = 0; i  < pastas.size(); i++) {
 			if(Objects.equals(pastas.get(i).getTituloPasta(), tituloPasta)) {
 				pastas.remove(i);
 				return true;

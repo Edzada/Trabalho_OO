@@ -7,7 +7,6 @@ import java.util.Scanner;
 import dados.*;
 
 public class Main {
-
 	private static Dados d = new Dados();
 	private static Scanner in = new Scanner(System.in);
 
@@ -17,73 +16,73 @@ public class Main {
 		int aux;
 		d.preencherDados();
 
-		while(op != 0) {
+		while (op != 0) {
 			System.out.print(imprimirMenu());
 			op = in.nextInt();
 
-			 switch (op) {
-			 	case 0:
-			 		System.out.println("Obrigada por utilizar o sistema. Ate logo!");
-			 		break;
+			switch (op) {
+				case 0:
+					System.out.println("Obrigado por utilizar o sistema. Até logo!");
+					break;
 				case 1:
 					cadastrarUsuario();
 					break;
 				case 2:
-					removerUsuario();
+					//removerUsuario();
 					break;
-				case 3: 
-					editarUsuario();
+				case 3:
+					//editarUsuario();
 					break;
-				case 4: 
-					listarUsuario();
+				case 4:
+					//listarUsuario();
 					break;
 				case 5:
-					filtrarUsuario();
+					//filtrarUsuario();
 					break;
 				case 6:
-					criarPasta();
+					//criarPasta();
 					break;
-				case 7: 
-					removerPasta();
+				case 7:
+					//removerPasta();
 					break;
-				case 8: 
-					editarPasta();
+				case 8:
+					//editarPasta();
 					break;
 				case 9:
-					listarPasta();
+					//listarPasta();
 					break;
-				case 10: 
-					filtrarPasta();
+				case 10:
+					//filtrarPasta();
 					break;
-				case 11: 
-					criarNota();
+				case 11:
+					//criarNota();
 					break;
-				case 12: 
-					removerNota();
+				case 12:
+					//removerNota();
 					break;
-				case 13: 
-					editarNota();
+				case 13:
+					//editarNota();
 					break;
 				case 14:
-					listarNota();
+					//listarNota();
 					break;
-				case 15: 
-					filtraNota();
+				case 15:
+					//filtraNota();
 					break;
 				case 16:
-					buscarNota();
+					//buscarNota();
 					break;
-				
+
 				default:
-					System.out.println("\nOpcao Invalida!\n");
+					System.out.println("\nOpção Inválida!\n");
 					break;
-			 }
+			}
 		}
 		in.close();
 	}
-	
-	public static String imprimirMenu() { 
-		String saida = new String("Escolha uma das opcoes a seguir:\n");
+
+	public static String imprimirMenu() {
+		String saida = new String("<<<< MENU >>>>\n");
 		saida = saida + "00 - Sair da aplicativo\n";
 		saida = saida + "01 - Cadastrar novo Usuário\n";
 		saida = saida + "02 - Remover Usuário existente\n";
@@ -101,9 +100,45 @@ public class Main {
 		saida = saida + "14 - Listar Notas\n";
 		saida = saida + "15 - Filtrar Notas\n";
 		saida = saida + "16 - Buscar Notas\n";
-				
+		saida = saida + "-> Escolha uma das opções a seguir: ";
+
 		return saida;
-	}	
 	}
 
+	public static boolean cadastrarUsuario(){
+		System.out.println("Escolha o plano desejado:\n1 -  Plano Free\n2 - Plano Plus");
+		int n = in.nextInt();
+
+		if(n == 1) {
+			String nome;
+			String dtNascimento;
+			String nomeUsuario;
+			String email;
+			String senha;
+
+			in.nextLine();
+
+			System.out.print("Informe o nome do usuário: ");
+			nome = in.nextLine();
+			System.out.print("\nInforme a data de nascimento do usuário: ");
+			dtNascimento = in.nextLine();
+			System.out.print("\nInforme o nome de usuário: ");
+			nomeUsuario = in.nextLine();
+			System.out.print("\nInforme o email: ");
+			email = in.nextLine();
+			System.out.print("\nInforme a senha para finalizar o cadastro: ");
+			senha = in.nextLine();
+
+			Usuario u = new UsuarioFree(nome, dtNascimento, nomeUsuario, email, senha);
+
+
+		} else if(n == 2) {
+
+		} else {
+			System.out.print("\nOpção Inválida\n");
+		}
+
+	}
+
+}
 

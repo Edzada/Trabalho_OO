@@ -10,10 +10,8 @@ public class UsuarioFree extends Usuario {
 
     public UsuarioFree(String n, String d, String nU, String e, String s) {
         super(n, d, nU, e, s);
-        this.qtdNotas = 1500;
         this.qtdPastas = 50;
         this.pastas = new ArrayList<>(50);
-        this.numPastas = 0;
     }
 
     public byte[] getImagem() {

@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class Dados {
 	private ArrayList<Usuario> usuarios;
-	private int numUsuarios = 0;
 
 	public Dados() {
 		this.usuarios = new ArrayList<>(200);
@@ -22,8 +21,8 @@ public class Dados {
 	}
 
 	public String[] getNomeUsuarios() {
-		String[] s = new String[numUsuarios];
-		for(int i = 0; i < numUsuarios; i++) {
+		String[] s = new String[usuarios.size()];
+		for(int i = 0; i < usuarios.size(); i++) {
 			s[i] = usuarios.get(i).getNome();
 		}
 
@@ -38,18 +37,22 @@ public class Dados {
 		this.usuarios.set(i, u);
 	}
 
+	public void addUsuario(Usuario u) {
+		this.usuarios.add(u);
+	}
+
 	public int getNumUsuarios() {
-		return numUsuarios;
+		return usuarios.size();
 	}
 
 	public void setNumUsuarios(int numUsuarios) {
-		this.numUsuarios = numUsuarios;
+		usuarios.ensureCapacity(numUsuarios);
 	}
 
 	public String listarUsuarios() {
 		String saida = ">>>>>> Lista de Usuarios <<<<<<\n";
 
-		for(int i = 0; i < numUsuarios; i++) {
+		for(int i = 0; i < usuarios.size(); i++) {
 			System.out.println(i);
 			saida = saida + "\n" + usuarios.get(i).getNome();
 		}
@@ -74,12 +77,10 @@ public class Dados {
 					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
 			usuarios.add(i, user);
 		}
-
-		numUsuarios = 10;
 	}
 
 	public boolean deletarUsuario(String nome) {
-		for(int i = 0; i < numUsuarios; i++) {
+		for(int i = 0; i < usuarios.size(); i++) {
 			if(Objects.equals(usuarios.get(i).getNome(), nome)) {
 				usuarios.remove(i);
 				return true;
