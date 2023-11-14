@@ -82,7 +82,7 @@ public class Main {
 	}
 
 	public static String imprimirMenu() {
-		String saida = new String("\n<<<< MENU >>>>\n");
+		String saida = "\n<<<< MENU >>>>\n";
 		saida = saida + "0 - Sair da aplicativo\n";
 		saida = saida + "1 - Cadastrar novo Usuário\n";
 		saida = saida + "2 - Remover Usuário existente\n";
