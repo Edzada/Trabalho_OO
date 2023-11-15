@@ -28,10 +28,10 @@ public class Main {
 					cadastrarUsuario();
 					break;
 				case 2:
-					//removerUsuario();
+					removerUsuario();
 					break;
 				case 3:
-					//editarUsuario();
+					editarUsuario();
 					break;
 				case 4:
 					//listarUsuario();
@@ -180,5 +180,22 @@ public class Main {
 
 	}
 
+	public static void removerUsuario() {
+		System.out.print("Informe o nome de usuário: ");
+		String nomeUsuario = in.nextLine();
+
+		// Valida o nome do usuário
+		if (nomeUsuario == null || nomeUsuario.isEmpty()) {
+			System.out.println("Nome de usuário inválido!");
+			return;
+		}
+
+		// Remove o usuário da base de dados
+		if (d.deletarUsuario(nomeUsuario)) {
+			System.out.println("Usuário removido com sucesso!");
+		} else {
+			System.out.println("Erro ao remover o usuário: ");
+		}
+	}
 }
 
