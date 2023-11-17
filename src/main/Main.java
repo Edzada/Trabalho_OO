@@ -2,6 +2,7 @@ package main;
 
 import negocio.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import dados.*;
@@ -31,10 +32,10 @@ public class Main {
 					removerUsuario();
 					break;
 				case 3:
-					editarUsuario();
+					//editarUsuario();
 					break;
 				case 4:
-					//listarUsuario();
+					listarUsuario();
 					break;
 				case 5:
 					//filtrarUsuario();
@@ -125,10 +126,10 @@ public class Main {
 			System.out.print("Informe a senha para finalizar o cadastro: ");
 			senha = in.nextLine();
 
-			Usuario u = new UsuarioFree(nome, dtNascimento, nomeUsuario, email, senha);
+			UsuarioFree u = new UsuarioFree(nome, dtNascimento, nomeUsuario, email, senha);
 
 			if(d.getNumUsuarios() < 200) {
-				d.addUsuario(u);
+				d.addUsuarioFree(u);
 				System.out.println("Usuário cadastrado com sucesso!");
 			} else {
 				System.out.println("Não é possível cadastrar o Usuário!");
@@ -165,10 +166,10 @@ public class Main {
 			limite = in.nextDouble();
 
 			Pagamento cartao = new Pagamento(emailFatura, numCartao, validade, cvv, pais, limite);
-			Usuario u = new UsuarioPlus(nome, dtNascimento, nomeUsuario, email, senha, cartao);
+			UsuarioPlus u = new UsuarioPlus(nome, dtNascimento, nomeUsuario, email, senha, cartao);
 
 			if(d.getNumUsuarios() < 200) {
-				d.addUsuario(u);
+				d.addUsuarioPlus(u);
 				System.out.println("Usuário cadastrado com sucesso!");
 			} else {
 				System.out.println("Não é possível cadastrar o Usuário!");
@@ -181,20 +182,61 @@ public class Main {
 	}
 
 	public static void removerUsuario() {
-		System.out.print("Informe o nome de usuário: ");
-		String nomeUsuario = in.nextLine();
+		in.nextLine();
+		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n");
+		int n = in.nextInt();
 
-		// Valida o nome do usuário
-		if (nomeUsuario == null || nomeUsuario.isEmpty()) {
-			System.out.println("Nome de usuário inválido!");
-			return;
+
+
+		if(n == 1) {
+			System.out.print(">> Informe o nome de usuário: ");
+			String nomeUsuario = in.nextLine();
+
+			// Valida o nome do usuário
+			if (nomeUsuario == null || nomeUsuario.isEmpty()) {
+				System.out.println("Nome de usuário inválido!");
+				return;
+			}
+
+			// Remove o usuário da base de dados
+			if (d.deletarUsuarioFree(nomeUsuario)) {
+				System.out.println("Usuário removido com sucesso!");
+			} else {
+				System.out.println("Erro ao remover o usuário: ");
+			}
+
+		} else if(n == 2) {
+			System.out.print(">> Informe o nome de usuário: ");
+			String nomeUsuario = in.nextLine();
+
+			// Valida o nome do usuário
+			if (nomeUsuario == null || nomeUsuario.isEmpty()) {
+				System.out.println("Nome de usuário inválido!");
+				return;
+			}
+
+			// Remove o usuário da base de dados
+			if (d.deletarUsuarioPlus(nomeUsuario)) {
+				System.out.println("Usuário removido com sucesso!");
+			} else {
+				System.out.println("Erro ao remover o usuário: ");
+			}
+
+		} else {
+			System.out.println("Opção Inválida!");
 		}
 
-		// Remove o usuário da base de dados
-		if (d.deletarUsuario(nomeUsuario)) {
-			System.out.println("Usuário removido com sucesso!");
-		} else {
-			System.out.println("Erro ao remover o usuário: ");
+	}
+
+	public static void listarUsuario() {
+		in.nextLine();
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		System.out.println(">>>>>> Lista de Usuários <<<<<<");
+		for(int i = 0; i < aux.size(); i++) {
+			System.out.println(i+1 + " -> " + aux.get(i).getNome());
 		}
 	}
 }

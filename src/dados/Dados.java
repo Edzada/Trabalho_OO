@@ -6,83 +6,125 @@ import java.util.List;
 import java.util.Objects;
 
 public class Dados {
-	private ArrayList<Usuario> usuarios;
+	private ArrayList<UsuarioFree> usuariosFree;
+	private ArrayList<UsuarioPlus> usuariosPlus;
 
 	public Dados() {
-		this.usuarios = new ArrayList<>(200);
+		this.usuariosFree = new ArrayList<>(100);
+		this.usuariosPlus = new ArrayList<>(100);
 	}
 
-	public ArrayList<Usuario> getUsuario() {
-		return usuarios;
+	public ArrayList<UsuarioFree> getUsuariosFree() {
+		return usuariosFree;
 	}
 
-	public Usuario getUsuario(int i) {
-		return usuarios.get(i);
+	public ArrayList<UsuarioPlus> getUsuariosPlus() {
+		return usuariosPlus;
 	}
 
-	public String[] getNomeUsuarios() {
-		String[] s = new String[usuarios.size()];
-		for(int i = 0; i < usuarios.size(); i++) {
-			s[i] = usuarios.get(i).getNome();
+	public UsuarioFree getUsuarioFree(int i) {
+		return usuariosFree.get(i);
+	}
+
+	public UsuarioPlus getUsuarioPlus(int i) {
+		return usuariosPlus.get(i);
+	}
+
+	public String[] getNomeUsuariosFree() {
+		String[] s = new String[usuariosFree.size()];
+		for(int i = 0; i < usuariosFree.size(); i++) {
+			s[i] = usuariosFree.get(i).getNome();
 		}
 
 		return s;
 	}
 
-	public void setUsuarios(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public String[] getNomeUsuariosPlus() {
+		String[] s = new String[usuariosPlus.size()];
+		for(int i = 0; i < usuariosPlus.size(); i++) {
+			s[i] = usuariosPlus.get(i).getNome();
+		}
+
+		return s;
 	}
 
-	public void setUsuario(int i, Usuario u) {
-		this.usuarios.set(i, u);
+	public void setUsuariosFree(ArrayList<UsuarioFree> usuariosF) {
+		this.usuariosFree = usuariosF;
 	}
 
-	public void addUsuario(Usuario u) {
-		this.usuarios.add(u);
+	public void setUsuariosPlus(ArrayList<UsuarioPlus> usuariosP) {
+		this.usuariosPlus = usuariosP;
+	}
+
+	public void setUsuarioFree(int i, UsuarioFree u) {
+		this.usuariosFree.set(i, u);
+	}
+
+	public void setUsuarioPlus(int i, UsuarioPlus u) {
+		this.usuariosPlus.set(i, u);
+	}
+
+	public void addUsuarioFree(UsuarioFree u) {
+		this.usuariosFree.add(u);
+	}
+
+	public void addUsuarioPlus(UsuarioPlus u) {
+		this.usuariosPlus.add(u);
 	}
 
 	public int getNumUsuarios() {
-		return usuarios.size();
+		return usuariosFree.size() + usuariosPlus.size();
 	}
 
-	public void setNumUsuarios(int numUsuarios) {
-		usuarios.ensureCapacity(numUsuarios);
+	public int getNumUsuariosFree() {
+		return usuariosFree.size();
 	}
 
-	public String listarUsuarios() {
-		String saida = ">>>>>> Lista de Usuarios <<<<<<\n";
+	public int getNumUsuariosPlus() {
+		return usuariosPlus.size();
+	}
 
-		for(int i = 0; i < usuarios.size(); i++) {
-			System.out.println(i);
-			saida = saida + "\n" + usuarios.get(i).getNome();
-		}
+	public void setNumUsuariosFree(int numUsuarios) {
+		usuariosFree.ensureCapacity(numUsuarios);
+	}
 
-		return saida;
+	public void setNumUsuariosPlus(int numUsuarios) {
+		usuariosPlus.ensureCapacity(numUsuarios);
 	}
 
 	public void preencherDados() {
-		int i;
-		for(i = 0; i < 5; i++) {
+		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-			Usuario user = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
-								"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s));
-			usuarios.add(i, user);
-		}
 
-		for(i = 5; i < 10; i++) {
-			String s = String.valueOf(i);
+			UsuarioFree userFree = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
+								"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s));
+			usuariosFree.add(i, userFree);
+
+
 			Pagamento cartao = new Pagamento("Email".concat(s), "NumCartao".concat(s),
 					"Validade".concat(s), 123, "Pais".concat(s), 2000.00);
-			Usuario user = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
+			UsuarioPlus userPlus = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
 					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
-			usuarios.add(i, user);
+			usuariosPlus.add(i, userPlus);
+
+
 		}
 	}
 
-	public boolean deletarUsuario(String nome) {
-		for(int i = 0; i < usuarios.size(); i++) {
-			if(Objects.equals(usuarios.get(i).getNome(), nome)) {
-				usuarios.remove(i);
+	public boolean deletarUsuarioFree(String nome) {
+		for(int i = 0; i < usuariosFree.size(); i++) {
+			if(usuariosFree.get(i).getNome().equalsIgnoreCase(nome)) {
+				usuariosFree.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean deletarUsuarioPlus(String nome) {
+		for(int i = 0; i < usuariosPlus.size(); i++) {
+			if(usuariosPlus.get(i).getNome().equalsIgnoreCase(nome)) {
+				usuariosPlus .remove(i);
 				return true;
 			}
 		}
@@ -90,6 +132,10 @@ public class Dados {
 	}
 
 	public String filtrarUsuarios(String nomeUsuario) {
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>(usuariosPlus.size() + usuariosFree.size());
+		usuarios.addAll(usuariosFree);
+		usuarios.addAll(usuariosPlus);
+
 		// Verifica se o nome do usuário é vazio
 		if (nomeUsuario.isEmpty()) {
 		  // Retorna uma lista vazia

@@ -48,12 +48,14 @@ public class Pasta {
 	public void setNumNotas(int numNotas) {
 		notas.ensureCapacity(numNotas);
 	}
+
 	//Método toString()
 	public String toString() {
 		return "Título: " + tituloPasta +
 				"\nData de criação: " + dtCriacaoPasta +
 				"\nNúmero de notas: " + notas.size();
 	}
+
 	// Método listarNotas()
 	public String listarNotas() {
 		// Variável para armazenar a saída
@@ -67,6 +69,7 @@ public class Pasta {
 
 		return saida;
 	}
+
 	//Método de filtraNotas()
 	public String filtrarNotas(String dtCriacaoNota) {
 		// Variável para armazenar as notas filtradas
@@ -107,7 +110,7 @@ public class Pasta {
 
 	public boolean deletarNota(String tituloNota) {
 		for(int i =0; i < notas.size(); i++) {
-			if (Objects.equals(notas.get(i).getTituloNota(), tituloNota)) {
+			if (notas.get(i).getTituloNota().equalsIgnoreCase(tituloNota)) {
 				notas.remove(i);
 				return true;
 			}

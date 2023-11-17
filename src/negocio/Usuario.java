@@ -94,7 +94,7 @@ public abstract class Usuario {
 
 	public boolean deletarPasta(String tituloPasta) {
 		for(int i = 0; i  < pastas.size(); i++) {
-			if(Objects.equals(pastas.get(i).getTituloPasta(), tituloPasta)) {
+			if(pastas.get(i).getTituloPasta().equalsIgnoreCase(tituloPasta)) {
 				pastas.remove(i);
 				return true;
 			}
@@ -116,7 +116,7 @@ public abstract class Usuario {
 		for (Pasta pasta : this.pastas) {
 	  
 		  // Verifica se a data de criação da pasta corresponde à data de criação fornecida
-		  if (pasta.getDtCriacaoPasta().equals(dtCriacaoPasta)) {
+		  if (pasta.getDtCriacaoPasta().equalsIgnoreCase(dtCriacaoPasta)) {
 			pastasFiltradas.add(pasta);
 		  }
 		}
