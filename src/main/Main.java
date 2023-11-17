@@ -186,8 +186,6 @@ public class Main {
 		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n");
 		int n = in.nextInt();
 
-
-
 		if(n == 1) {
 			System.out.print(">> Informe o nome de usuário: ");
 			String nomeUsuario = in.nextLine();
