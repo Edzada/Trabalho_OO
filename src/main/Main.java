@@ -237,5 +237,22 @@ public class Main {
 			System.out.println(i+1 + " -> " + aux.get(i).getNome());
 		}
 	}
+
+
+	public static void filtrarUsuarios(){
+		System.out.println("Informe o nome do usuario");
+		String aux;
+		Scanner entrada=new Scanner(System.in);
+		String nomeUsuario;
+		nomeUsuario=entrada.nextLine();
+		entrada.close();
+		aux = d.filtrarUsuarios(nomeUsuario);
+		if (aux == "[]") {
+			System.out.println("Usuario nao encontrado");
+		}
+		else {
+			System.out.println(aux);
+		};
+	}
 }
 
