@@ -26,7 +26,6 @@ public class Main {
 					break;
 				case 1:
 					cadastrarUsuario();
-					break;
 				case 2:
 					removerUsuario();
 					break;
@@ -79,6 +78,15 @@ public class Main {
 			}
 		}
 		in.close();
+	}
+
+	private static void limparTela() {
+	}
+
+	private static void aguardarComando() {
+	}
+
+	private static void limparBuffer() {
 	}
 
 	public static String imprimirMenu() {
