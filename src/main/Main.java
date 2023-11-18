@@ -31,7 +31,7 @@ public class Main {
 					removerUsuario();
 					break;
 				case 3:
-					//editarUsuario();
+					editarUsuario();
 					break;
 				case 4:
 					listarUsuario();
@@ -105,27 +105,65 @@ public class Main {
 		return saida;
 	}
 
+	public static UsuarioFree lerDadosUsuarioF() {
+		String nome, dtNascimento, nomeUsuario, email, senha;
+
+		in.nextLine();
+
+		System.out.print("Informe o nome do usuário: ");
+		nome = in.nextLine();
+		System.out.print("Informe a data de nascimento do usuário: ");
+		dtNascimento = in.nextLine();
+		System.out.print("Informe o nome de usuário: ");
+		nomeUsuario = in.nextLine();
+		System.out.print("Informe o email: ");
+		email = in.nextLine();
+		System.out.print("Informe a senha para finalizar o cadastro: ");
+		senha = in.nextLine();
+
+		return new UsuarioFree(nome, dtNascimento, nomeUsuario, email, senha);
+	}
+
+	public static UsuarioPlus lerDadosUsuarioP() {
+		String nome, dtNascimento, nomeUsuario, email, senha, emailFatura, numCartao, validade, pais;
+		int cvv;
+		double limite;
+
+		in.nextLine();
+
+		System.out.print("Informe o nome do usuário: ");
+		nome = in.nextLine();
+		System.out.print("Informe a data de nascimento do usuário: ");
+		dtNascimento = in.nextLine();
+		System.out.print("Informe o nome de usuário: ");
+		nomeUsuario = in.nextLine();
+		System.out.print("Informe o email: ");
+		email = in.nextLine();
+		System.out.print("Informe a senha: ");
+		senha = in.nextLine();
+		System.out.print("Informe o email para o recebimento da fatura da assinatura: ");
+		emailFatura = in.nextLine();
+		System.out.print("Informe o número do cartão: ");
+		numCartao = in.nextLine();
+		System.out.print("Informe a data de validade do cartão: ");
+		validade = in.nextLine();
+		System.out.print("Informe o país onde o cartão foi emitido: ");
+		pais = in.nextLine();
+		System.out.print("Informe o CVV do cartão: ");
+		cvv = in.nextInt();
+		System.out.print("Informe o limite do cartão: ");
+		limite = in.nextDouble();
+
+		Pagamento cartao = new Pagamento(emailFatura, numCartao, validade, cvv, pais, limite);
+		return new UsuarioPlus(nome, dtNascimento, nomeUsuario, email, senha, cartao);
+	}
+
 	public static void cadastrarUsuario(){
 		System.out.print("\nEscolha o plano desejado:\n1 - Plano Free\n2 - Plano Plus\n>> ");
 		int n = in.nextInt();
 
 		if(n == 1) {
-			String nome, dtNascimento, nomeUsuario, email, senha;
-
-			in.nextLine();
-
-			System.out.print("Informe o nome do usuário: ");
-			nome = in.nextLine();
-			System.out.print("Informe a data de nascimento do usuário: ");
-			dtNascimento = in.nextLine();
-			System.out.print("Informe o nome de usuário: ");
-			nomeUsuario = in.nextLine();
-			System.out.print("Informe o email: ");
-			email = in.nextLine();
-			System.out.print("Informe a senha para finalizar o cadastro: ");
-			senha = in.nextLine();
-
-			UsuarioFree u = new UsuarioFree(nome, dtNascimento, nomeUsuario, email, senha);
+			UsuarioFree u = lerDadosUsuarioF();
 
 			if(d.getNumUsuarios() < 200) {
 				d.addUsuarioFree(u);
@@ -135,37 +173,7 @@ public class Main {
 			}
 
 		} else if(n == 2) {
-			String nome, dtNascimento, nomeUsuario, email, senha, emailFatura, numCartao, validade, pais;
-			int cvv;
-			double limite;
-
-			in.nextLine();
-
-			System.out.print("Informe o nome do usuário: ");
-			nome = in.nextLine();
-			System.out.print("Informe a data de nascimento do usuário: ");
-			dtNascimento = in.nextLine();
-			System.out.print("Informe o nome de usuário: ");
-			nomeUsuario = in.nextLine();
-			System.out.print("Informe o email: ");
-			email = in.nextLine();
-			System.out.print("Informe a senha: ");
-			senha = in.nextLine();
-			System.out.print("Informe o email para o recebimento da fatura da assinatura: ");
-			emailFatura = in.nextLine();
-			System.out.print("Informe o número do cartão: ");
-			numCartao = in.nextLine();
-			System.out.print("Informe a data de validade do cartão: ");
-			validade = in.nextLine();
-			System.out.print("Informe o país onde o cartão foi emitido: ");
-			pais = in.nextLine();
-			System.out.print("Informe o CVV do cartão: ");
-			cvv = in.nextInt();
-			System.out.print("Informe o limite do cartão: ");
-			limite = in.nextDouble();
-
-			Pagamento cartao = new Pagamento(emailFatura, numCartao, validade, cvv, pais, limite);
-			UsuarioPlus u = new UsuarioPlus(nome, dtNascimento, nomeUsuario, email, senha, cartao);
+			UsuarioPlus u = lerDadosUsuarioP();
 
 			if(d.getNumUsuarios() < 200) {
 				d.addUsuarioPlus(u);
@@ -182,7 +190,7 @@ public class Main {
 
 	public static void removerUsuario() {
 		in.nextLine();
-		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n");
+		System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
 		int n = in.nextInt();
 
 		if(n == 1) {
@@ -205,7 +213,7 @@ public class Main {
 
 		} else if(n == 2) {
 			in.nextLine();
-			System.out.print(">> Informe o nome de usuário: ");
+			System.out.print(">> Informe o nome do usuário: ");
 			String nomeUsuario = in.nextLine();
 
 			// Valida o nome do usuário
@@ -227,15 +235,59 @@ public class Main {
 
 	}
 
+	public static void editarUsuario() {
+		System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
+		int n = in.nextInt();
+
+		if(n == 1) {
+			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
+
+			System.out.println(">>>>>> Usuários Free <<<<<<");
+			for(int i = 0; i < d.getUsuariosFree().size(); i++) {
+				System.out.println(i + " -> " + d.getUsuariosFree().get(i).getNome());
+			}
+			int aux = in.nextInt();
+
+			UsuarioFree u = lerDadosUsuarioF();
+
+			if(aux < d.getNumUsuariosFree() && aux >= 0) {
+				d.setUsuarioFree(aux, u);
+				System.out.println("Informações do usuário editadas com sucesso!");
+			} else {
+				System.out.println("Número inválido!");
+			}
+
+		} else if(n == 2) {
+			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
+
+			System.out.println(">>>>>> Usuários Plus <<<<<<");
+			for(int i = 0; i < d.getUsuariosPlus().size(); i++) {
+				System.out.println(i + " -> " + d.getUsuariosPlus().get(i).getNome());
+			}
+			int aux = in.nextInt();
+
+			UsuarioPlus u = lerDadosUsuarioP();
+
+			if(aux < d.getNumUsuariosPlus() && aux >= 0) {
+				d.setUsuarioPlus(aux, u);
+				System.out.println("Informações do usuário editadas com sucesso!");
+			} else {
+				System.out.println("Número inválido!");
+			}
+		} else {
+			System.out.println("Opção Inválida!");
+		}
+	}
+
 	public static void listarUsuario() {
 		in.nextLine();
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());
 		aux.addAll(d.getUsuariosPlus());
 
-		System.out.println(">>>>>> Lista de Usuários <<<<<<");
+		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
 		for(int i = 0; i < aux.size(); i++) {
-			System.out.println(i+1 + " -> " + aux.get(i).getNome());
+			System.out.println(i + " -> " + aux.get(i).getNome());
 		}
 	}
 
