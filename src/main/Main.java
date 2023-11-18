@@ -14,7 +14,6 @@ public class Main {
 	public static void main(String[] args) {
 
 		int op = -1;
-		int aux;
 		d.preencherDados();
 
 		while (op != 0) {
@@ -187,6 +186,7 @@ public class Main {
 		int n = in.nextInt();
 
 		if(n == 1) {
+			in.nextLine();
 			System.out.print(">> Informe o nome de usuário: ");
 			String nomeUsuario = in.nextLine();
 
@@ -204,6 +204,7 @@ public class Main {
 			}
 
 		} else if(n == 2) {
+			in.nextLine();
 			System.out.print(">> Informe o nome de usuário: ");
 			String nomeUsuario = in.nextLine();
 
