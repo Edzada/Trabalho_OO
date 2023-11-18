@@ -36,7 +36,7 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-					//filtrarUsuario();
+				    filtrarUsuario();
 					break;
 				case 6:
 					//criarPasta();
@@ -300,7 +300,7 @@ public class Main {
 	}
 
 
-	public static void filtrarUsuarios(){
+	public static void filtrarUsuario(){
 		System.out.println("Informe o nome do usuario");
 		String aux;
 		Scanner entrada=new Scanner(System.in);
