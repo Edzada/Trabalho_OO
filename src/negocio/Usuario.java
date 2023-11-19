@@ -65,6 +65,30 @@ public abstract class Usuario {
 		this.senha = senha;
 	}
 
+	public ArrayList<Pasta> getPastas() {
+		return pastas;
+	}
+
+	public void setPastas(ArrayList<Pasta> pastas) {
+		this.pastas = pastas;
+	}
+
+	public Pasta getPasta(int i) {
+		return pastas.get(i);
+	}
+
+	public void setPasta(int i, Pasta p) {
+		pastas.set(i, p);
+	}
+
+	public int getNumPastas() {
+		return pastas.size();
+	}
+
+	public void setNumPastas(int numPastas) {
+		pastas.ensureCapacity(numPastas);
+	}
+
 	//  Método toString para representar o objeto Usuario como uma string
 	public String toString() {
 		return "Nome: " + nome +
@@ -126,5 +150,16 @@ public abstract class Usuario {
 	  
 		// Retorna uma string contendo as pastas filtradas
 		return pastasFiltradas.toString();
-	  }
+	}
+
+	public void preencherPastas() {
+		for(int i = 0; i < 10; i++) {
+			String s = String.valueOf(i);
+
+			Pasta p = new Pasta("TituloPasta".concat(s), "DtCriacao".concat(s));
+			pastas.add(i, p);
+		}
+	}
+
+
 }

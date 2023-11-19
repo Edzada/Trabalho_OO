@@ -15,6 +15,8 @@ public class Main {
 
 		int op = -1;
 		d.preencherDados();
+		d.preencherDadosPastas();
+
 
 		while (op != 0) {
 			System.out.print(imprimirMenu());
@@ -45,7 +47,7 @@ public class Main {
 					//editarPasta();
 					break;
 				case 8:
-					//listarPasta();
+					listarPasta();
 					break;
 				case 9:
 					//filtrarPasta();
@@ -293,6 +295,24 @@ public class Main {
 		for(int i = 0; i < aux.size(); i++) {
 			System.out.println(i + " -> " + aux.get(i).getNome());
 		}
+	}
+
+	public static void listarPasta() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarUsuario();
+		System.out.print("Informe o usuário que deseja ver a lista de pastas:\n>> ");
+		int n = in.nextInt();
+
+		System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
+		if(n < aux.size() && n >= 0) {
+			for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
+				System.out.println("\nPASTA: " + i + "\n" + aux.get(i).getPasta(i).toString());
+			}
+		}
+
 	}
 }
 

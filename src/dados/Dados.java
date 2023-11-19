@@ -92,24 +92,6 @@ public class Dados {
 		usuariosPlus.ensureCapacity(numUsuarios);
 	}
 
-	public void preencherDados() {
-		for(int i = 0; i < 10; i++) {
-			String s = String.valueOf(i);
-
-			UsuarioFree userFree = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
-								"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s));
-			usuariosFree.add(i, userFree);
-
-
-			Pagamento cartao = new Pagamento("Email".concat(s), "NumCartao".concat(s),
-					"Validade".concat(s), 123, "Pais".concat(s), 2000.00);
-			UsuarioPlus userPlus = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
-					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
-			usuariosPlus.add(i, userPlus);
-
-
-		}
-	}
 
 	public boolean deletarUsuarioFree(String nome) {
 		for(int i = 0; i < usuariosFree.size(); i++) {
@@ -129,6 +111,35 @@ public class Dados {
 			}
 		}
 		return false;
+	}
+
+	public void preencherDados() {
+		for(int i = 0; i < 10; i++) {
+			String s = String.valueOf(i);
+
+			UsuarioFree userFree = new UsuarioFree("Nome".concat(s), "DataNascimento".concat(s),
+					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s));
+			usuariosFree.add(i, userFree);
+
+
+			Pagamento cartao = new Pagamento("Email".concat(s), "NumCartao".concat(s),
+					"Validade".concat(s), 123, "Pais".concat(s), 2000.00);
+			UsuarioPlus userPlus = new UsuarioPlus("Nome".concat(s), "DataNascimento".concat(s),
+					"NomeUsuario".concat(s), "email".concat(s), "Senha".concat(s), cartao);
+			usuariosPlus.add(i, userPlus);
+
+
+		}
+	}
+
+	public void preencherDadosPastas() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(getNumUsuarios());
+		aux.addAll(usuariosFree);
+		aux.addAll(usuariosPlus);
+
+		for(int i = 0; i < aux.size(); i++) {
+			aux.get(i).preencherPastas();
+		}
 	}
 	  
 }

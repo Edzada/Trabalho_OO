@@ -117,5 +117,15 @@ public class Pasta {
 		}
 		return false;
 	}
+
+	public void preencherNotas() {
+		for(int i = 0; i < 10; i++) {
+			String s = String.valueOf(i);
+
+			Nota n = new Nota("TituloNota".concat(s), "DtCriacao".concat(s), "Conteudo".concat(s));
+
+			notas.add(i, n);
+		}
+	}
 	
 }
