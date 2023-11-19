@@ -113,7 +113,7 @@ public class Dados {
 		return false;
 	}
 
-	public void preencherDados() {
+	public void preencherDadosUsuarios() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
 
@@ -139,6 +139,16 @@ public class Dados {
 
 		for(int i = 0; i < aux.size(); i++) {
 			aux.get(i).preencherPastas();
+		}
+	}
+
+	public void preencherDadosNotas() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(getNumUsuarios());
+		aux.addAll(usuariosFree);
+		aux.addAll(usuariosPlus);
+
+		for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
+			aux.get(i).getPasta(i).preencherNotas();
 		}
 	}
 	  

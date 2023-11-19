@@ -41,6 +41,14 @@ public class Pasta {
 		this.notas = notas;
 	}
 
+	public Nota getNota(int i) {
+		return notas.get(i);
+	}
+
+	public void setNota(int i, Nota n) {
+		notas.set(i, n);
+	}
+
 	public int getNumNotas() {
 		return notas.size();
 	}

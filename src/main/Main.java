@@ -14,8 +14,9 @@ public class Main {
 	public static void main(String[] args) {
 
 		int op = -1;
-		d.preencherDados();
+		d.preencherDadosUsuarios();
 		d.preencherDadosPastas();
+		d.preencherDadosNotas();
 
 
 		while (op != 0) {
@@ -62,7 +63,7 @@ public class Main {
 					//editarNota();
 					break;
 				case 13:
-					//listarNota();
+					listarNota();
 					break;
 				case 14:
 					//filtraNota();
@@ -293,7 +294,7 @@ public class Main {
 
 		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
 		for(int i = 0; i < aux.size(); i++) {
-			System.out.println(i + " -> " + aux.get(i).getNome());
+			System.out.println("\nUSUARIO: " + i + "\nNOME: " + aux.get(i).getNome());
 		}
 	}
 
@@ -306,13 +307,35 @@ public class Main {
 		System.out.print("Informe o usuário que deseja ver a lista de pastas:\n>> ");
 		int n = in.nextInt();
 
-		System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
+
 		if(n < aux.size() && n >= 0) {
+			System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
 			for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
 				System.out.println("\nPASTA: " + i + "\n" + aux.get(i).getPasta(i).toString());
 			}
+		} else {
+			System.out.println("Número inválido!");
 		}
 
+	}
+
+	public static void listarNota() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarPasta();
+		System.out.print("Informe a pasta que deseja ver a lista de notas:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			System.out.print("\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
+			for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
+				System.out.println("\nNOTA: " + i + "\n" + aux.get(i).getPasta(i).getNota(i).toString());
+			}
+		} else {
+			System.out.println("Número inválido!");
+		}
 	}
 }
 
