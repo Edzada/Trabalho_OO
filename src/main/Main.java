@@ -36,39 +36,36 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-				    filtrarUsuario();
-					break;
-				case 6:
 					//criarPasta();
 					break;
-				case 7:
+				case 6:
 					//removerPasta();
 					break;
-				case 8:
+				case 7:
 					//editarPasta();
 					break;
-				case 9:
+				case 8:
 					//listarPasta();
 					break;
-				case 10:
+				case 9:
 					//filtrarPasta();
 					break;
-				case 11:
+				case 10:
 					//criarNota();
 					break;
-				case 12:
+				case 11:
 					//removerNota();
 					break;
-				case 13:
+				case 12:
 					//editarNota();
 					break;
-				case 14:
+				case 13:
 					//listarNota();
 					break;
-				case 15:
+				case 14:
 					//filtraNota();
 					break;
-				case 16:
+				case 15:
 					//buscarNota();
 					break;
 
@@ -96,18 +93,17 @@ public class Main {
 		saida = saida + "2 - Remover Usuário existente\n";
 		saida = saida + "3 - Editar Usuário existente\n";
 		saida = saida + "4 - Listar Usuários\n";
-		saida = saida + "5 - Filtrar Usuários\n";
-		saida = saida + "6 - Criar uma nova Pasta\n";
-		saida = saida + "7 - Remover uma Pasta existente\n";
-		saida = saida + "8 - Editar Pastas\n";
-		saida = saida + "9 - Listar Pastas\n";
-		saida = saida + "10 - Filtrar Pastas\n";
-		saida = saida + "11 - Criar Nota\n";
-		saida = saida + "12 - Remover Nota\n";
-		saida = saida + "13 - Editar Nota\n";
-		saida = saida + "14 - Listar Notas\n";
-		saida = saida + "15 - Filtrar Notas\n";
-		saida = saida + "16 - Buscar Notas\n";
+		saida = saida + "5 - Criar uma nova Pasta\n";
+		saida = saida + "6 - Remover uma Pasta existente\n";
+		saida = saida + "7 - Editar Pastas\n";
+		saida = saida + "8 - Listar Pastas\n";
+		saida = saida + "9 - Filtrar Pastas\n";
+		saida = saida + "10 - Criar Nota\n";
+		saida = saida + "11 - Remover Nota\n";
+		saida = saida + "12 - Editar Nota\n";
+		saida = saida + "13 - Listar Notas\n";
+		saida = saida + "14 - Filtrar Notas\n";
+		saida = saida + "15 - Buscar Notas\n";
 		saida = saida + ">> Escolha uma das opções: ";
 
 		return saida;
@@ -297,23 +293,6 @@ public class Main {
 		for(int i = 0; i < aux.size(); i++) {
 			System.out.println(i + " -> " + aux.get(i).getNome());
 		}
-	}
-
-
-	public static void filtrarUsuario(){
-		System.out.println("Informe o nome do usuario");
-		String aux;
-		Scanner entrada=new Scanner(System.in);
-		String nomeUsuario;
-		nomeUsuario=entrada.nextLine();
-		entrada.close();
-		aux = d.filtrarUsuarios(nomeUsuario);
-		if (aux == "[]") {
-			System.out.println("Usuario nao encontrado");
-		}
-		else {
-			System.out.println(aux);
-		};
 	}
 }
 

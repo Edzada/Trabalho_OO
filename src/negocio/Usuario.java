@@ -23,6 +23,7 @@ public abstract class Usuario {
 		this.senha = s;
 		this.qtdNotas = 1500;
 	}
+
 	// Métodos getters e setters
 	public String getNome() {
 		return nome;
@@ -71,7 +72,8 @@ public abstract class Usuario {
 				"\nQuantidade de Notas: " + qtdNotas +
 				"\nQuantidade de Pastas: " + qtdPastas;
 	}
-	 // Método listarPastas para exibir todas as pastas do usuário
+
+	// Método listarPastas para exibir todas as pastas do usuário
 	public String listarPastas() {
 		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
 
@@ -82,6 +84,7 @@ public abstract class Usuario {
 
 		return saida;
 	}
+
 	// Método atribuirPasta para adicionar uma nova pasta ao usuário
 	public boolean atribuirPasta(Pasta p) {
 		if(pastas.size() >= qtdPastas) {  // Verifica se há limite de pastas

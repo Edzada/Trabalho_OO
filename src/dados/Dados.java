@@ -130,35 +130,5 @@ public class Dados {
 		}
 		return false;
 	}
-
-	public String filtrarUsuarios(String nomeUsuario) {
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>(usuariosPlus.size() + usuariosFree.size());
-		usuarios.addAll(usuariosFree);
-		usuarios.addAll(usuariosPlus);
-
-		// Verifica se o nome do usuário é vazio
-		if (nomeUsuario.isEmpty()) {
-		  // Retorna uma lista vazia
-		  return "";
-		}
-	  
-		// Cria uma lista para armazenar os usuários filtrados
-		List<Usuario> usuariosFiltrados = new ArrayList<>();
-	  
-		// Percorre a lista de usuários
-		for (Usuario usuario : usuarios) {
-		  // Verifica se o nome do usuário corresponde ao filtro
-		  if (usuario.getNome().contains(nomeUsuario)) {
-			// Adiciona o usuário à lista filtrada
-			usuariosFiltrados.add(usuario);
-		  }
-		}
-	  
-		// Converte a lista de usuários em uma string
-		String usuariosFiltradosString = usuariosFiltrados.toString();
-	  
-		// Retorna a lista de usuários filtrados
-		return usuariosFiltradosString;
-	  }
 	  
 }
