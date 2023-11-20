@@ -337,5 +337,39 @@ public class Main {
 			System.out.println("Número inválido!");
 		}
 	}
-}
 
+	public static void criarPasta() {
+		in.nextLine();
+		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus");
+		int tipoUsuario = in.nextInt();
+
+		in.nextLine(); // Limpar buffer
+
+		System.out.print("Informe o nome do usuários: ");
+		String nomeUsuario = in.nextLine();
+
+		Usuario usuario = null;
+		if (tipoUsuario == 1) {
+			usuario = d.getUsuarioFree(nomeUsuario);
+		} else if (tipoUsuario == 2) {
+			usuario = d.getUsuarioPlus(nomeUsuario);
+		} else {
+			System.out.println("Opção inválida!");
+			return;
+		}
+
+		if(usuario == null) {
+			System.out.println("Usuário não encontrado!");
+			return;
+		}
+
+		System.out.print("Informe o nome da nova pasta: ");
+		String nomePasta = in.nextLine();
+
+		Pasta novaPasta = new Pasta(nomePasta);
+		usuario.atribuirPasta(novaPasta);
+
+		System.out.println("Pasta criada com sucesso! " + usuario.getNome());
+
+	}
+}
