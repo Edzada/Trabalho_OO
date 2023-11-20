@@ -22,6 +22,7 @@ public abstract class Usuario {
 		this.email = e;
 		this.senha = s;
 		this.qtdNotas = 1500;
+		this.pastas = new ArrayList<Pasta>();
 	}
 
 	// Métodos getters e setters

@@ -46,7 +46,7 @@ public class Main {
 					 removerPasta();
 					break;
 				case 7:
-					//editarPasta();
+					editarPasta();
 					break;
 				case 8:
 					listarPasta();
