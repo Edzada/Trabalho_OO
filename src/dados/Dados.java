@@ -22,12 +22,23 @@ public class Dados {
 		return usuariosPlus;
 	}
 
-	public UsuarioFree getUsuarioFree(int i) {
-		return usuariosFree.get(i);
-	}
+	// Modifique a função para procurar um usuário pelo nome
+    public UsuarioFree getUsuarioFree(String nomeUsuario) {
+        for (UsuarioFree usuario : usuariosFree) {
+            if (usuario.getNome().equals(nomeUsuario)) {
+                return usuario;
+            }
+        }
+        return null; // Retorna null se não encontrar o usuário
+    }
 
-	public UsuarioPlus getUsuarioPlus(int i) {
-		return usuariosPlus.get(i);
+	public UsuarioPlus getUsuarioPlus(String nomeUsuario) {
+		for (UsuarioPlus usuario : usuariosPlus) {
+			if (usuario.getNome().equals(nomeUsuario)) {
+				return usuario;
+			}
+		}
+		return null;
 	}
 
 	public String[] getNomeUsuariosFree() {

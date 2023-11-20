@@ -16,7 +16,10 @@ public class Pasta {
 		this.notas = new ArrayList<>(1500);
 	}
 	
-	//Métodos getters e setters
+	public Pasta(String nomePasta) {
+    }
+
+    //Métodos getters e setters
 	public String getTituloPasta() {
 		return tituloPasta;
 	}
