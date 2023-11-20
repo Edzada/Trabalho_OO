@@ -45,7 +45,7 @@ public class Main {
 					// removerPasta();
 					break;
 				case 7:
-					// editarPasta();
+					editarPasta();
 					break;
 				case 8:
 					listarPasta();
@@ -338,57 +338,72 @@ public class Main {
 		}
 	}
 
-	public static void editarPasta(){
+		public static void editarPasta(){
+				int h = 0;
+			
+				System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
+				int n = in.nextInt();
+			
+				if (n == 1) {
+					System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
+					System.out.println(">>>>>> Usuários Free <<<<<<");
+					for (int i = 0; i < d.getUsuariosFree().size(); i++) {
+						System.out.println(i + " -> " + d.getUsuariosFree().get(i).getNome());
+					}
+					int aux = in.nextInt();
+			
+					if (aux >= 0 && aux < d.getUsuariosFree().size()) {
+						UsuarioFree u = d.getUsuariosFree().get(aux);
+						System.out.println("Escolha a pasta a ser editada: ");
+						for (int j = 0; j < u.getNumPastas(); j++) {
+							System.out.println(j + " -> " + u.getPasta(j).getTituloPasta());
+						}
+						h = in.nextInt();
+			
+						if (h >= 0 && h < u.getNumPastas()) {
+							Pasta p = lerDadosPasta();
+							u.setPasta(h, p);
+							System.out.println("Informações da Pasta editadas com sucesso!");
+						} else {
+							System.out.println("Número inválido para a pasta!");
+						}
+					} else {
+						System.out.println("Número inválido para o usuário!");
+					}
+				} else if (n == 2) {
+					System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
+					System.out.println(">>>>>> Usuários Plus <<<<<<");
+					for (int i = 0; i < d.getUsuariosPlus().size(); i++) {
+						System.out.println(i + " -> " + d.getUsuariosPlus().get(i).getNome());
+					}
+					int aux = in.nextInt();
+			
+					if (aux >= 0 && aux < d.getUsuariosPlus().size()) {
+						UsuarioPlus u = d.getUsuariosPlus().get(aux);
+						System.out.println("Escolha a pasta a ser editada: ");
+						for (int j = 0; j < u.getNumPastas(); j++) {
+							System.out.println(j + " -> " + u.getPasta(j).getTituloPasta());
+						}
+						h = in.nextInt();
 
-		int  h = 0;
-		Pasta p = new Pasta(null, null);
-
-
-		System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
-		int n = in.nextInt();
-
-		if(n == 1) {
-			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
-
-			System.out.println(">>>>>> Usuários Free <<<<<<");
-			for(int i = 0; i < d.getUsuariosFree().size(); i++) {
-				System.out.println(i + " -> " + d.getUsuariosFree().get(i).getNome());
-			}
-			int aux = in.nextInt();
-
-			Usuario u = lerDadosUsuarioF();
-
-			if(h < u.getNumPastas() && h >= 0) {
-				u.setPasta(h, p);
-				System.out.println("Informações da Pasta editadas com sucesso!");
-			} else {
-				System.out.println("Número inválido!");
-			}
-
-			} else if(n == 2) {
-			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
-
-			System.out.println(">>>>>> Usuários Plus <<<<<<");
-			for(int i = 0; i < d.getUsuariosPlus().size(); i++) {
-				System.out.println(i + " -> " + d.getUsuariosPlus().get(i).getNome());
-			}
-			int aux = in.nextInt();
-
-			UsuarioPlus u = lerDadosUsuarioP();
-
-		
-			if(h < u.getNumPastas() && h >= 0) {
-				u.setPasta(h, p);
-				System.out.println("Informações da Pasta editadas com sucesso!");
+						if (h >= 0 && h < u.getNumPastas()) {
+							Pasta p = lerDadosPasta();
+							u.setPasta(h, p);
+							System.out.println("Informações da Pasta editadas com sucesso!");
+						} else {
+							System.out.println("Número inválido para a pasta!");
+						}
+					} else {
+						System.out.println("Número inválido para o usuário!");
+					}
 				} else {
-				System.out.println("Número inválido!");
-
-				}	
-
-	
+					System.out.println("Opção Inválida!");
+				}
 			}
-			else {
-			System.out.println("Opção Inválida!");
+
+		private static Pasta lerDadosPasta() {
+			return null;
 		}
+			
 	}
-}
+
