@@ -29,7 +29,7 @@ public class Main {
 					break;
 				case 1:
 					cadastrarUsuario();
-
+					break;
 				case 2:
 					removerUsuario();
 					break;
@@ -40,39 +40,47 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-					 criarPasta();
-					break;
+					 //visualizarUsuario();
+					 break;
 				case 6:
-					 removerPasta();
+					criarPasta();
 					break;
 				case 7:
-					editarPasta();
+					removerPasta();
 					break;
 				case 8:
-					listarPasta();
+					editarPasta();
 					break;
 				case 9:
-					// filtrarPasta();
+					listarPasta();
 					break;
 				case 10:
-					// criarNota();
+					// filtrarPasta();
 					break;
 				case 11:
-					// removerNota();
+					//visualizarPasta();
 					break;
 				case 12:
-					// editarNota();
+					// criarNota();
 					break;
 				case 13:
-					listarNota();
+					// removerNota();
 					break;
 				case 14:
-					// filtraNota();
+					// editarNota();
 					break;
 				case 15:
+					listarNota();
+					break;
+				case 16:
+					// filtraNota();
+					break;
+				case 17:
 					// buscarNota();
 					break;
-
+				case 18:
+					//visualizarNota();
+					break;
 				default:
 					System.out.println("\nOpção Inválida!\n");
 					break;
@@ -88,17 +96,20 @@ public class Main {
 		saida = saida + "2 - Remover Usuário existente\n";
 		saida = saida + "3 - Editar Usuário existente\n";
 		saida = saida + "4 - Listar Usuários\n";
-		saida = saida + "5 - Criar uma nova Pasta\n";
-		saida = saida + "6 - Remover uma Pasta existente\n";
-		saida = saida + "7 - Editar Pastas\n";
-		saida = saida + "8 - Listar Pastas\n";
-		saida = saida + "9 - Filtrar Pastas\n";
-		saida = saida + "10 - Criar Nota\n";
-		saida = saida + "11 - Remover Nota\n";
-		saida = saida + "12 - Editar Nota\n";
-		saida = saida + "13 - Listar Notas\n";
-		saida = saida + "14 - Filtrar Notas\n";
-		saida = saida + "15 - Buscar Notas\n";
+		saida = saida + "5 - Visualizar Usuário\n";
+		saida = saida + "6 - Criar uma nova Pasta\n";
+		saida = saida + "7 - Remover uma Pasta existente\n";
+		saida = saida + "8 - Editar Pastas\n";
+		saida = saida + "9 - Listar Pastas\n";
+		saida = saida + "10 - Filtrar Pastas\n";
+		saida = saida + "11 - Visualizar Pasta\n";
+		saida = saida + "12 - Criar Nota\n";
+		saida = saida + "13 - Remover Nota\n";
+		saida = saida + "14 - Editar Nota\n";
+		saida = saida + "15 - Listar Notas\n";
+		saida = saida + "16 - Filtrar Notas\n";
+		saida = saida + "17 - Buscar Notas\n";
+		saida = saida + "18 - Visualizar Nota\n";
 		saida = saida + ">> Escolha uma das opções: ";
 
 		return saida;
@@ -302,7 +313,7 @@ public class Main {
 		if (n < aux.size() && n >= 0) {
 			System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
 			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
-				System.out.println("\nPASTA: " + i + "\n" + aux.get(i).getPasta(i).toString());
+				System.out.println("\nPASTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getTituloPasta());
 			}
 		} else {
 			System.out.println("Número inválido!");
@@ -323,7 +334,7 @@ public class Main {
 			System.out.print(
 					"\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
 			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
-				System.out.println("\nNOTA: " + i + "\n" + aux.get(i).getPasta(i).getNota(i).toString());
+				System.out.println("\nNOTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getNota(i).getTituloNota());
 			}
 		} else {
 			System.out.println("Número inválido!");
