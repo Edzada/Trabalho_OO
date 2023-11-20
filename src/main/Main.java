@@ -18,7 +18,6 @@ public class Main {
 		d.preencherDadosPastas();
 		d.preencherDadosNotas();
 
-
 		while (op != 0) {
 			System.out.print(imprimirMenu());
 			op = in.nextInt();
@@ -29,6 +28,7 @@ public class Main {
 					break;
 				case 1:
 					cadastrarUsuario();
+
 				case 2:
 					removerUsuario();
 					break;
@@ -39,37 +39,37 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-					//criarPasta();
+					// criarPasta();
 					break;
 				case 6:
-					//removerPasta();
+					// removerPasta();
 					break;
 				case 7:
-					//editarPasta();
+					// editarPasta();
 					break;
 				case 8:
 					listarPasta();
 					break;
 				case 9:
-					//filtrarPasta();
+					// filtrarPasta();
 					break;
 				case 10:
-					//criarNota();
+					// criarNota();
 					break;
 				case 11:
-					//removerNota();
+					// removerNota();
 					break;
 				case 12:
-					//editarNota();
+					// editarNota();
 					break;
 				case 13:
 					listarNota();
 					break;
 				case 14:
-					//filtraNota();
+					// filtraNota();
 					break;
 				case 15:
-					//buscarNota();
+					// buscarNota();
 					break;
 
 				default:
@@ -165,24 +165,24 @@ public class Main {
 		return new UsuarioPlus(nome, dtNascimento, nomeUsuario, email, senha, cartao);
 	}
 
-	public static void cadastrarUsuario(){
+	public static void cadastrarUsuario() {
 		System.out.print("\nEscolha o plano desejado:\n1 - Plano Free\n2 - Plano Plus\n>> ");
 		int n = in.nextInt();
 
-		if(n == 1) {
+		if (n == 1) {
 			UsuarioFree u = lerDadosUsuarioF();
 
-			if(d.getNumUsuarios() < 200) {
+			if (d.getNumUsuarios() < 200) {
 				d.addUsuarioFree(u);
 				System.out.println("Usuário cadastrado com sucesso!");
 			} else {
 				System.out.println("Não é possível cadastrar o Usuário!");
 			}
 
-		} else if(n == 2) {
+		} else if (n == 2) {
 			UsuarioPlus u = lerDadosUsuarioP();
 
-			if(d.getNumUsuarios() < 200) {
+			if (d.getNumUsuarios() < 200) {
 				d.addUsuarioPlus(u);
 				System.out.println("Usuário cadastrado com sucesso!");
 			} else {
@@ -200,7 +200,7 @@ public class Main {
 		System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
 		int n = in.nextInt();
 
-		if(n == 1) {
+		if (n == 1) {
 			in.nextLine();
 			System.out.print(">> Informe o nome de usuário: ");
 			String nomeUsuario = in.nextLine();
@@ -218,7 +218,7 @@ public class Main {
 				System.out.println("Erro ao remover o usuário: ");
 			}
 
-		} else if(n == 2) {
+		} else if (n == 2) {
 			in.nextLine();
 			System.out.print(">> Informe o nome do usuário: ");
 			String nomeUsuario = in.nextLine();
@@ -246,36 +246,36 @@ public class Main {
 		System.out.print("\nEscolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus\n>> ");
 		int n = in.nextInt();
 
-		if(n == 1) {
+		if (n == 1) {
 			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
 
 			System.out.println(">>>>>> Usuários Free <<<<<<");
-			for(int i = 0; i < d.getUsuariosFree().size(); i++) {
+			for (int i = 0; i < d.getUsuariosFree().size(); i++) {
 				System.out.println(i + " -> " + d.getUsuariosFree().get(i).getNome());
 			}
 			int aux = in.nextInt();
 
 			UsuarioFree u = lerDadosUsuarioF();
 
-			if(aux < d.getNumUsuariosFree() && aux >= 0) {
+			if (aux < d.getNumUsuariosFree() && aux >= 0) {
 				d.setUsuarioFree(aux, u);
 				System.out.println("Informações do usuário editadas com sucesso!");
 			} else {
 				System.out.println("Número inválido!");
 			}
 
-		} else if(n == 2) {
+		} else if (n == 2) {
 			System.out.println("Escolha um dos usuários a seguir para editar as informações: ");
 
 			System.out.println(">>>>>> Usuários Plus <<<<<<");
-			for(int i = 0; i < d.getUsuariosPlus().size(); i++) {
+			for (int i = 0; i < d.getUsuariosPlus().size(); i++) {
 				System.out.println(i + " -> " + d.getUsuariosPlus().get(i).getNome());
 			}
 			int aux = in.nextInt();
 
 			UsuarioPlus u = lerDadosUsuarioP();
 
-			if(aux < d.getNumUsuariosPlus() && aux >= 0) {
+			if (aux < d.getNumUsuariosPlus() && aux >= 0) {
 				d.setUsuarioPlus(aux, u);
 				System.out.println("Informações do usuário editadas com sucesso!");
 			} else {
@@ -293,7 +293,7 @@ public class Main {
 		aux.addAll(d.getUsuariosPlus());
 
 		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
-		for(int i = 0; i < aux.size(); i++) {
+		for (int i = 0; i < aux.size(); i++) {
 			System.out.println("\nUSUARIO: " + i + "\nNOME: " + aux.get(i).getNome());
 		}
 	}
@@ -307,10 +307,9 @@ public class Main {
 		System.out.print("Informe o usuário que deseja ver a lista de pastas:\n>> ");
 		int n = in.nextInt();
 
-
-		if(n < aux.size() && n >= 0) {
+		if (n < aux.size() && n >= 0) {
 			System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
-			for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
+			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
 				System.out.println("\nPASTA: " + i + "\n" + aux.get(i).getPasta(i).toString());
 			}
 		} else {
@@ -328,9 +327,10 @@ public class Main {
 		System.out.print("Informe a pasta que deseja ver a lista de notas:\n>> ");
 		int n = in.nextInt();
 
-		if(n < aux.size() && n >= 0) {
-			System.out.print("\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
-			for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
+		if (n < aux.size() && n >= 0) {
+			System.out.print(
+					"\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
+			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
 				System.out.println("\nNOTA: " + i + "\n" + aux.get(i).getPasta(i).getNota(i).toString());
 			}
 		} else {
