@@ -40,4 +40,12 @@ public class UsuarioPlus extends Usuario{
 		}
 	}
 
+	public String toString() {
+		return "Nome: " + nome +
+				"\nNome de Usuário: " + nomeUsuario +
+				"\nQuantidade de Notas: " + qtdNotas +
+				"\nQuantidade de Pastas: " + qtdPastas +
+				"\n" + cartao.toString();
+	}
+
 }

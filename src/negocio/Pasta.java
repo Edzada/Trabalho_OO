@@ -67,20 +67,6 @@ public class Pasta {
 				"\nNúmero de notas: " + notas.size();
 	}
 
-	// Método listarNotas()
-	public String listarNotas() {
-		// Variável para armazenar a saída
-		String saida = ">>>>>> Lista de Notas <<<<<<\n";
-		// Itera sobre a lista de notas
-		for(int i = 0; i < notas.size(); i++) {
-			// Adiciona a representação `toString()` da nota à variável saida
-			System.out.println(i);
-			saida = saida + "\n" + notas.get(i).toString();
-		}
-
-		return saida;
-	}
-
 	//Método de filtraNotas()
 	public String filtrarNotas(String dtCriacaoNota) {
 		// Variável para armazenar as notas filtradas

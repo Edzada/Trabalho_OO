@@ -12,6 +12,7 @@ public class Main {
 	private static Dados d = new Dados();
 	private static Scanner in = new Scanner(System.in);
 
+
 	public static void main(String[] args) {
 
 		int op = -1;
@@ -40,7 +41,7 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-					 //visualizarUsuario();
+					 visualizarUsuario();
 					 break;
 				case 6:
 					criarPasta();
@@ -58,7 +59,7 @@ public class Main {
 					// filtrarPasta();
 					break;
 				case 11:
-					//visualizarPasta();
+					visualizarPasta();
 					break;
 				case 12:
 					// criarNota();
@@ -79,7 +80,7 @@ public class Main {
 					// buscarNota();
 					break;
 				case 18:
-					//visualizarNota();
+					visualizarNota();
 					break;
 				default:
 					System.out.println("\nOpção Inválida!\n");
@@ -114,6 +115,8 @@ public class Main {
 
 		return saida;
 	}
+
+	// Funções relacionadas ao Usuário
 
 	public static UsuarioFree lerDadosUsuarioF() {
 		String nome, dtNascimento, nomeUsuario, email, senha;
@@ -297,49 +300,26 @@ public class Main {
 
 		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
 		for (int i = 0; i < aux.size(); i++) {
-			System.out.println("\nUSUARIO: " + i + "\nNOME: " + aux.get(i).getNome());
+			System.out.println("\nUSUARIO: " + i + " - 4NOME: " + aux.get(i).getNome());
 		}
 	}
 
-	public static void listarPasta() {
+	public static void visualizarUsuario() {
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());
 		aux.addAll(d.getUsuariosPlus());
 
 		listarUsuario();
-		System.out.print("Informe o usuário que deseja ver a lista de pastas:\n>> ");
+		System.out.print("Informe o usuário que deseja ver as informações:\n>> ");
 		int n = in.nextInt();
 
-		if (n < aux.size() && n >= 0) {
-			System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
-			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
-				System.out.println("\nPASTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getTituloPasta());
-			}
-		} else {
-			System.out.println("Número inválido!");
-		}
-
-	}
-
-	public static void listarNota() {
-		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
-		aux.addAll(d.getUsuariosFree());
-		aux.addAll(d.getUsuariosPlus());
-
-		listarPasta();
-		System.out.print("Informe a pasta que deseja ver a lista de notas:\n>> ");
-		int n = in.nextInt();
-
-		if (n < aux.size() && n >= 0) {
-			System.out.print(
-					"\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
-			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
-				System.out.println("\nNOTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getNota(i).getTituloNota());
-			}
-		} else {
-			System.out.println("Número inválido!");
+		if(n < aux.size() && n >= 0) {
+			System.out.println("\n>>>>>> USUÁRIO " + aux.get(n).getNome() + " <<<<<<");
+			System.out.println(aux.get(n).toString());
 		}
 	}
+
+	// Funções relacionadas a Pastas
 
 	public static void criarPasta() {
 		in.nextLine();
@@ -380,12 +360,12 @@ public class Main {
 		in.nextLine();
 		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus");
 		int tipoUsuario = in.nextInt();
-	
+
 		in.nextLine(); // Limpar o buffer
-	
+
 		System.out.print("Informe o nome do usuário: ");
 		String nomeUsuario = in.nextLine();
-	
+
 		Usuario usuario = null;
 		if (tipoUsuario == 1) {
 			usuario = d.getUsuarioFree(nomeUsuario);
@@ -395,17 +375,17 @@ public class Main {
 			System.out.println("Opção inválida!");
 			return;
 		}
-	
+
 		if (usuario == null) {
 			System.out.println("Usuário não encontrado!");
 			return;
 		}
-	
+
 		listarPasta(); // Listar as pastas do usuário
-	
+
 		System.out.print("Informe o número da pasta que deseja remover: ");
 		int numeroPasta = in.nextInt();
-	
+
 		if (numeroPasta < usuario.getNumPastas() && numeroPasta >= 0) {
 			usuario.deletarPasta(usuario.getPasta(numeroPasta).getTituloPasta());
 			System.out.println("Pasta removida com sucesso!");
@@ -415,30 +395,101 @@ public class Main {
 	}
 
 	public static void editarPasta(){
-		
+
 		listarPasta();
 
-			System.out.print("Informe o número da pasta que deseja editar: ");
-			int numeroPasta = in.nextInt();
-		
-			if (numeroPasta < u.getNumPastas() && numeroPasta >= 0) {
-				in.nextLine(); // Limpar o buffer
-		
-				System.out.print("Informe o novo título da pasta: ");
-				String novoTitulo = in.nextLine();
-		
-				System.out.print("Informe a nova data de criação da pasta: ");
-				String novaDataCriacao = in.nextLine();
-		
-				u.getPasta(numeroPasta).setTituloPasta(novoTitulo);
-				u.getPasta(numeroPasta).setDtCriacaoPasta(novaDataCriacao);
-		
-				System.out.println("Pasta editada com sucesso!");
-			} else {
-				System.out.println("Número de pasta inválido!");
+		System.out.print("Informe o número da pasta que deseja editar: ");
+		int numeroPasta = in.nextInt();
+
+		if (numeroPasta < u.getNumPastas() && numeroPasta >= 0) {
+			in.nextLine(); // Limpar o buffer
+
+			System.out.print("Informe o novo título da pasta: ");
+			String novoTitulo = in.nextLine();
+
+			System.out.print("Informe a nova data de criação da pasta: ");
+			String novaDataCriacao = in.nextLine();
+
+			u.getPasta(numeroPasta).setTituloPasta(novoTitulo);
+			u.getPasta(numeroPasta).setDtCriacaoPasta(novaDataCriacao);
+
+			System.out.println("Pasta editada com sucesso!");
+		} else {
+			System.out.println("Número de pasta inválido!");
+		}
+	}
+
+	public static void listarPasta() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarUsuario();
+		System.out.print("Informe o usuário que deseja ver a lista de pastas:\n>> ");
+		int n = in.nextInt();
+
+		if (n < aux.size() && n >= 0) {
+			System.out.print("\n >>>>>> Lista de Pastas do Usuário " + aux.get(n).getNome() + " <<<<<<\n");
+			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
+				System.out.println("\nPASTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getTituloPasta());
 			}
-		
-		
+		} else {
+			System.out.println("Número inválido!");
+		}
+
+	}
+
+	public static void visualizarPasta() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarPasta();
+		System.out.print("Informe a pasta que deseja ver as informações:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			System.out.println("\n>>>>>> PASTA " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<");
+			System.out.println(aux.get(n).getPasta(n).toString());
+		}
+
+	}
+
+
+	// Funções relacionadas a Notas
+	public static void listarNota() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarPasta();
+		System.out.print("Informe a pasta que deseja ver a lista de notas:\n>> ");
+		int n = in.nextInt();
+
+		if (n < aux.size() && n >= 0) {
+			System.out.print(
+					"\n >>>>>> Lista de Notas da Pasta " + aux.get(n).getPasta(n).getTituloPasta() + " <<<<<<\n");
+			for (int i = 0; i < aux.get(i).getPastas().size(); i++) {
+				System.out.println("\nNOTA: " + i + "\nTÍTULO: " + aux.get(i).getPasta(i).getNota(i).getTituloNota());
+			}
+		} else {
+			System.out.println("Número inválido!");
+		}
+	}
+
+	public static void visualizarNota() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarNota();
+		System.out.print("Informe a nota que deseja ver as informações:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			System.out.println("\n>>>>>> Nota " + aux.get(n).getPasta(n).getNota(n).getTituloNota() + " <<<<<<");
+			System.out.println(aux.get(n).getPasta(n).getNota(n).toString());
+		}
 
 	}
 	

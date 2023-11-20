@@ -98,17 +98,6 @@ public abstract class Usuario {
 				"\nQuantidade de Pastas: " + qtdPastas;
 	}
 
-	// Método listarPastas para exibir todas as pastas do usuário
-	public String listarPastas() {
-		String saida = ">>>>>> Lista de Pastas <<<<<<\n";
-
-		for(int i = 0; i < pastas.size(); i++) {
-			System.out.println(i);
-			saida = saida + "\n" + pastas.get(i).toString(); 
-		}
-
-		return saida;
-	}
 
 	// Método atribuirPasta para adicionar uma nova pasta ao usuário
 	public boolean atribuirPasta(Pasta p) {
