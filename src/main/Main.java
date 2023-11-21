@@ -337,7 +337,7 @@ public class Main {
 
 		in.nextLine(); // Limpar buffer
 
-		System.out.print("Informe o nome do usuários: ");
+		System.out.print("Informe o nome do usuário: ");
 		String nomeUsuario = in.nextLine();
 
 		Usuario usuario = null;
