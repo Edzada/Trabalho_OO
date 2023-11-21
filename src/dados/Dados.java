@@ -124,6 +124,18 @@ public class Dados {
 		return false;
 	}
 
+	public void listarUsuario() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(getNumUsuarios());
+		aux.addAll(usuariosFree);
+		aux.addAll(usuariosPlus);
+
+		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
+		for (int i = 0; i < aux.size(); i++) {
+			System.out.println("\nUSUARIO: " + i + " - NOME: " + aux.get(i).getNome());
+		}
+	}
+
+
 	public void preencherDadosUsuarios() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
@@ -158,9 +170,13 @@ public class Dados {
 		aux.addAll(usuariosFree);
 		aux.addAll(usuariosPlus);
 
-		for(int i = 0; i < aux.get(i).getPastas().size(); i++) {
-			aux.get(i).getPasta(i).preencherNotas();
+		for(int i = 0; i < aux.size(); i++) {
+			for(int j = 0; j < aux.get(i).getPastas().size(); j++) {
+				aux.get(i).getPasta(j).preencherNotas();
+			}
 		}
+
+
 	}
 	  
 	

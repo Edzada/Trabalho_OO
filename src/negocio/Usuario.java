@@ -152,6 +152,13 @@ public abstract class Usuario {
 		return pastasFiltradas.toString();
 	}
 
+	public void listarPastas() {
+		for (int i = 0; i < getNumPastas(); i++) {
+			System.out.println("\nPASTA: " + i + "\nTÍTULO: " + getPasta(i).getTituloPasta());
+		}
+
+	}
+
 	public void preencherPastas() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);

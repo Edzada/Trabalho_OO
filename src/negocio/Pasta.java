@@ -93,6 +93,12 @@ public class Pasta {
 		return notasFiltradas; // Retorna a lista de notas filtradas
 	}
 
+	public void listarNotas() {
+		for (int i = 0; i < getNumNotas(); i++) {
+			System.out.println("\nNOTA: " + i + "\nTÍTULO: " + getNota(i).getTituloNota());
+		}
+	}
+
 	public boolean acrescentarNota(Nota n) {
 		if(notas.size() >= 1500) {
 			return false;
