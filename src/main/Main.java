@@ -41,8 +41,8 @@ public class Main {
 					listarUsuario();
 					break;
 				case 5:
-					 visualizarUsuario();
-					 break;
+					visualizarUsuario();
+					break;
 				case 6:
 					criarPasta();
 					break;
@@ -56,7 +56,7 @@ public class Main {
 					listarPasta();
 					break;
 				case 10:
-					// filtrarPasta();
+					filtrarPasta();
 					break;
 				case 11:
 					visualizarPasta();
@@ -74,10 +74,10 @@ public class Main {
 					listarNota();
 					break;
 				case 16:
-					// filtraNota();
+					filtrarNota();
 					break;
 				case 17:
-					// buscarNota();
+					buscarNota();
 					break;
 				case 18:
 					visualizarNota();
@@ -300,7 +300,7 @@ public class Main {
 
 		System.out.println("\n>>>>>> Lista de Usuários <<<<<<");
 		for (int i = 0; i < aux.size(); i++) {
-			System.out.println("\nUSUARIO: " + i + " - 4NOME: " + aux.get(i).getNome());
+			System.out.println("\nUSUARIO: " + i + " - NOME: " + aux.get(i).getNome());
 		}
 	}
 
@@ -455,6 +455,25 @@ public class Main {
 
 	}
 
+	public static void filtrarPasta() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarUsuario();
+		System.out.print("Informe o usuário desejado:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			in.nextLine();
+			System.out.print("Informe a data de criação a ser filtrada:\n>> ");
+			String dt = in.nextLine();
+
+			System.out.println("\n>>>>>> NOTAS FILTRADAS <<<<<<");
+			System.out.println(aux.get(n).filtrarPastas(dt));
+		}
+	}
+
 
 	// Funções relacionadas a Notas
 	public static void listarNota() {
@@ -491,6 +510,44 @@ public class Main {
 			System.out.println(aux.get(n).getPasta(n).getNota(n).toString());
 		}
 
+	}
+
+	public static void filtrarNota() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarPasta();
+		System.out.print("Informe a pasta desejada:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			in.nextLine();
+			System.out.print("Informe a data de criação a ser filtrada:\n>> ");
+			String dt = in.nextLine();
+
+			System.out.println("\n>>>>>> NOTAS FILTRADAS <<<<<<");
+			System.out.println(aux.get(n).getPasta(n).filtrarNotas(dt));
+		}
+	}
+
+	public static void buscarNota() {
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+
+		listarPasta();
+		System.out.print("Informe a pasta desejada para realizar a busca:\n>> ");
+		int n = in.nextInt();
+
+		if(n < aux.size() && n >= 0) {
+			in.nextLine();
+			System.out.print("Informe o título da nota a ser buscada:\n>> ");
+			String titulo = in.nextLine();
+
+			System.out.println("\n>>>>>> NOTA <<<<<<");
+			System.out.println(aux.get(n).getPasta(n).pesquisarNota(titulo));
+		}
 	}
 	
 }
