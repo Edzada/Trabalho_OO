@@ -90,6 +90,15 @@ public class Main {
 		in.close();
 	}
 
+	private static void limparTela() {
+	}
+
+	private static void aguardarComando() {
+	}
+
+	private static void limparBuffer() {
+	}
+
 	public static String imprimirMenu() {
 		String saida = "\n<<<< MENU >>>>\n";
 		saida = saida + "0 - Sair da aplicativo\n";
