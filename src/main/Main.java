@@ -68,7 +68,7 @@ public class Main {
 					 removerNota();
 					break;
 				case 14:
-					// aaaaaeditarNota();
+					editarNota();
 					break;
 				case 15:
 					listarNota();
