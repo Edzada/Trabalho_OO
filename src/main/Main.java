@@ -563,6 +563,7 @@ public class Main {
 		Pasta p = new Pasta(null, null);
 		in.nextLine();
 		listarNota();
+		System.out.println("Informe o nome da nota que sera removida");
 	    String nomeNota=in.nextLine();
 		if(p.deletarNota(nomeNota)) {
 			System.out.println("Nota removida com sucesso");
