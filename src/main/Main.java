@@ -554,6 +554,64 @@ public class Main {
 		}
 	}
 
+	// Editar nota
+	public static void editarNota() {
+		in.nextLine();
+		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus");
+		int tipoUsuario = in.nextInt();
+
+		in.nextLine(); // Limpar o buffer
+
+		System.out.print("Informe o nome do usuário: ");
+		String nomeUsuario = in.nextLine();
+
+		Usuario usuario = null;
+		if (tipoUsuario == 1) {
+			usuario = d.getUsuarioFree(nomeUsuario);
+		} else if (tipoUsuario == 2) {
+			usuario = d.getUsuarioPlus(nomeUsuario);
+		} else {
+			System.out.println("Opção inválida!");
+			return;
+		}
+
+		if (usuario == null) {
+			System.out.println("Usuário não encontrado!");
+			return;
+		}
+
+		System.out.print("Informe o nome da pasta onde está a nota que deseja editar: ");
+		String nomePasta = in.nextLine();
+
+		Pasta pasta = usuario.getPastaNome(nomePasta);
+		if (pasta == null) {
+			System.out.println("Pasta não encontrada!");
+			return;
+		}
+
+		System.out.print("Informe o título da nota que deseja editar: ");
+		String tituloNota = in.nextLine();
+
+		Nota nota = pasta.getNota(tituloNota);
+		if (nota == null) {
+			System.out.println("Nota não encontrada!");
+			return;
+		}
+
+		System.out.print("Informe o novo título da nota: ");
+		String novoTitulo = in.nextLine();
+
+		System.out.print("Informe o novo conteúdo da nota: ");
+		String novoConteudo = in.nextLine();
+
+		// Editar a nota
+		nota.setTituloNota(novoTitulo);
+		nota.setConteudoNota(novoConteudo);
+
+		System.out.println("Nota editada com sucesso na pasta " + pasta.getTituloPasta() + " para o usuário " + usuario.getNome());
+	}
+
+
 	public static void visualizarNota() {
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());

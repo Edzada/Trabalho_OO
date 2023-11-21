@@ -48,6 +48,16 @@ public class Pasta {
 		return notas.get(i);
 	}
 
+	public Nota getNotaTitulo(String tituloNota) {
+		for (Nota nota : notas) {
+			if (nota.getTituloNota().equals(tituloNota)) {
+				return nota;
+			}
+		}
+		return null; // Retorna null se a nota não for encontrada
+	}
+
+
 	public void setNota(int i, Nota n) {
 		notas.set(i, n);
 	}
@@ -123,6 +133,10 @@ public class Pasta {
 
 			notas.add(i, n);
 		}
+	}
+
+	public Nota getNota(String tituloNota) {
+		return null;
 	}
 	
 }
