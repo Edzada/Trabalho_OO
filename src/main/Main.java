@@ -381,20 +381,19 @@ public class Main {
 	}
 
 	public static void editarPasta(){
-		
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());
 		aux.addAll(d.getUsuariosPlus());
-		
 		listarPasta();
 
 		System.out.print("Informe o número da pasta que deseja editar: ");
+		int numeroPasta = in.nextInt();
 		
 		int n = in.nextInt();
-		int numeroPasta = in.nextInt();
-
+		
 		if (numeroPasta < aux.get(n).getNumPastas() && numeroPasta >= 0) {
 			in.nextLine(); // Limpar o buffer
+
 			System.out.print("Informe o novo título da pasta: ");
 			String novoTitulo = in.nextLine();
 
