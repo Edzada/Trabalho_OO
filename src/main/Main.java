@@ -65,7 +65,7 @@ public class Main {
 					// criarNota();
 					break;
 				case 13:
-					// removerNota();
+					 removerNota();
 					break;
 				case 14:
 					// aaaaaeditarNota();
@@ -556,6 +556,19 @@ public class Main {
 
 			System.out.println("\n>>>>>> NOTA <<<<<<");
 			System.out.println(aux.get(n).getPasta(n).pesquisarNota(titulo));
+		}
+	}
+
+	public static void removerNota() {
+		Pasta p = new Pasta(null, null);
+		in.nextLine();
+		listarNota();
+	    String nomeNota=in.nextLine();
+		if(p.deletarNota(nomeNota)) {
+			System.out.println("Nota removida com sucesso");
+		}
+		else {
+			System.out.println("Nota invalida");
 		}
 	}
 	
