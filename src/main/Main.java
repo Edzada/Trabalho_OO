@@ -709,19 +709,40 @@ System.out.print("Informe o nome do usuário: ");
 
 	}
 
+	
 	public static void removerNota() {
-		Pasta p = new Pasta(null, null);
-		in.nextLine();
-		listarNota();
-		System.out.println("Informe o nome da nota que sera removida");
-	    String nomeNota=in.nextLine();
-		if(p.deletarNota(nomeNota)) {
-			System.out.println("Nota removida com sucesso");
-		}
-		else {
-			System.out.println("Nota invalida");
+		ArrayList<Usuario>aux =new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+		
+		d.listarUsuario();
+		System.out.println("Informe o usuário que deseja ver a lista de pastas");
+		int x=in.nextInt();
+		
+		if(x<aux.size() && x>=0) {
+			System.out.println("\n >>>>>>>> Lista de Pastas do Usuário " +aux.get(x).getNome() + "<<<<<<<<<");
+			aux.get(x).listarPastas();
+			System.out.print("Informe a pasta que deseja visualizar: ");
+			int n=in.nextInt();
+			
+			if(n<aux.get(x).getNumPastas() && n>=0) {
+				System.out.print("\n >>>>>>> Lista de Notas da Pasta  " +aux.get(x).getPasta(n).getTituloPasta() + "<<<<<<<<<");
+				aux.get(x).getPasta(n).listarNotas();
+				System.out.print("Informe a nota que deseja remover: ");
+				int s=in.nextInt();
+				
+				
+				if(aux.get(x).getPasta(n).deletarNota(aux.get(x).getPasta(n).getNota(s).getTituloNota())) {
+					System.out.print("Nota removida com sucesso");
+					
+				}
+				else {
+					System.out.print("Nota invalida");
+				}
+			}
 		}
 	}
+	
 	
 }
 
