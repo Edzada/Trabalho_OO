@@ -550,6 +550,19 @@ public class Main {
 		}
 	}
 	
+	public static void removerNota(){
+		filtrarPasta();
+
+		System.out.print("Informe o número da nota que deseja remover: ");
+		int numeroNota = in.nextInt();
+
+		if (numeroNota < u.getNumPastas() && numeroNota >= 0) {
+			u.getPasta(numeroNota).deletarNota(u.getPasta(numeroNota).getNota(numeroNota).getTituloNota());
+			System.out.println("Nota removida com sucesso!");
+		} else {
+			System.out.println("Número de nota inválido!");
+		}
+	}
 }
 
 
