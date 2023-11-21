@@ -485,6 +485,55 @@ public class Main {
 
 
 	// Funções relacionadas a Notas
+	
+	public static void criarNota() {
+		in.nextLine();
+		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus");
+		int tipoUsuario = in.nextInt();
+
+		in.nextLine(); // Limpar o buffer
+
+		System.out.print("Informe o nome do usuário: ");
+		String nomeUsuario = in.nextLine();
+
+		Usuario usuario = null;
+		if(tipoUsuario == 1) {
+			usuario = d.getUsuarioFree(nomeUsuario);
+		}	
+		else if (tipoUsuario == 2) {
+			usuario = d.getUsuarioPlus(nomeUsuario);
+		}	
+		else {
+			System.out.println("Opção inválida!");
+			return;
+		}
+
+		if (usuario == null) {
+			System.out.println("Usuário não encontrado!");
+			return;
+		}
+
+		System.out.print("Informe o nome da pasta onde deseja criar a nota: ");
+		String nomePasta = in.nextLine();
+
+		Pasta pasta = u.getPastaNome(nomePasta);
+		if (pasta == null) {
+			System.out.println("Pasta não encontrada!");
+			return;
+		}
+		
+		System.out.print("Informe o título da nova nota: ");
+    	String tituloNota = in.nextLine();
+
+		System.out.print("Informe o conteúdo da nota: ");
+    	String conteudoNota = in.nextLine();
+
+		Nota novaNota = new Nota(tituloNota, conteudoNota);
+    	pasta.acrescentarNota(novaNota);
+
+		System.out.println("Nota criada com sucesso na pasta " + pasta.getTituloPasta() + " para o usuário " + u.getNomeUsuario());
+	}
+
 	public static void listarNota() {
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());

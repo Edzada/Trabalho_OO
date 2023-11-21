@@ -11,7 +11,10 @@ public class Nota {
 		this.conteudoNota = c;
 	}
 
-	public String getTituloNota() {
+	public Nota(String tituloNota2, String conteudoNota2) {
+    }
+
+    public String getTituloNota() {
 		return tituloNota;
 	}
 

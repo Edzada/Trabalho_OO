@@ -78,6 +78,16 @@ public abstract class Usuario {
 		return pastas.get(i);
 	}
 
+	//Encontra a pasta pelo nome
+	public Pasta getPastaNome(String nomePasta) {
+		for (Pasta pasta : pastas) {
+			if (pasta.getTituloPasta().equals(nomePasta)) {
+				return pasta;
+			}
+		}
+		return null; // Retorna null se a pasta não for encontrada
+	}
+
 	public void setPasta(int i, Pasta p) {
 		pastas.set(i, p);
 	}
@@ -150,6 +160,5 @@ public abstract class Usuario {
 			pastas.add(i, p);
 		}
 	}
-
 
 }
