@@ -381,29 +381,35 @@ public class Main {
 	}
 
 	public static void editarPasta(){
-
+		
+		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
+		aux.addAll(d.getUsuariosFree());
+		aux.addAll(d.getUsuariosPlus());
+		
 		listarPasta();
 
 		System.out.print("Informe o número da pasta que deseja editar: ");
+		
+		int n = in.nextInt();
 		int numeroPasta = in.nextInt();
 
-		if (numeroPasta < u.getNumPastas() && numeroPasta >= 0) {
+		if (numeroPasta < aux.get(n).getNumPastas() && numeroPasta >= 0) {
 			in.nextLine(); // Limpar o buffer
-
 			System.out.print("Informe o novo título da pasta: ");
 			String novoTitulo = in.nextLine();
 
 			System.out.print("Informe a nova data de criação da pasta: ");
 			String novaDataCriacao = in.nextLine();
 
-			u.getPasta(numeroPasta).setTituloPasta(novoTitulo);
-			u.getPasta(numeroPasta).setDtCriacaoPasta(novaDataCriacao);
+			aux.get(n).getPasta(numeroPasta).setTituloPasta(novoTitulo);
+			aux.get(n).getPasta(numeroPasta).setDtCriacaoPasta(novaDataCriacao);
 
 			System.out.println("Pasta editada com sucesso!");
 		} else {
 			System.out.println("Número de pasta inválido!");
 		}
 	}
+
 
 	public static void listarPasta() {
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
@@ -547,13 +553,13 @@ public class Main {
 
 	// Editar nota
 	public static void editarNota() {
-		in.nextLine();
+in.nextLine();
 		System.out.println("Escolha o tipo de usuário:\n1 - Usuário Free\n2 - Usuário Plus");
 		int tipoUsuario = in.nextInt();
 
 		in.nextLine(); // Limpar o buffer
 
-		System.out.print("Informe o nome do usuário: ");
+System.out.print("Informe o nome do usuário: ");
 		String nomeUsuario = in.nextLine();
 
 		Usuario usuario = null;
@@ -570,7 +576,7 @@ public class Main {
 			System.out.println("Usuário não encontrado!");
 			return;
 		}
-
+		
 		System.out.print("Informe o nome da pasta onde está a nota que deseja editar: ");
 		String nomePasta = in.nextLine();
 
