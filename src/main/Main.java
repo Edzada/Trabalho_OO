@@ -62,7 +62,7 @@ public class Main {
 					visualizarPasta();
 					break;
 				case 12:
-					// criarNota();
+					criarNota();
 					break;
 				case 13:
 					 removerNota();
