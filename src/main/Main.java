@@ -65,7 +65,7 @@ public class Main {
 					criarNota();
 					break;
 				case 13:
-					 removerNota();
+					removerNota();
 					break;
 				case 14:
 					editarNota();
@@ -384,29 +384,37 @@ public class Main {
 		ArrayList<Usuario> aux = new ArrayList<Usuario>(d.getNumUsuarios());
 		aux.addAll(d.getUsuariosFree());
 		aux.addAll(d.getUsuariosPlus());
-		listarPasta();
 
-		System.out.print("Informe o número da pasta que deseja editar: ");
-		int numeroPasta = in.nextInt();
-		
-		int n = in.nextInt();
-		
-		if (numeroPasta < aux.get(n).getNumPastas() && numeroPasta >= 0) {
-			in.nextLine(); // Limpar o buffer
+		d.listarUsuario();
+		System.out.print("Informe o usuário desejado:\n>> ");
+		int x = in.nextInt();
 
-			System.out.print("Informe o novo título da pasta: ");
-			String novoTitulo = in.nextLine();
+		if (x < aux.size() && x >= 0) {
+			aux.get(x).listarPastas();
+			System.out.print("Informe o número da pasta que deseja editar: ");
+			int n = in.nextInt();
 
-			System.out.print("Informe a nova data de criação da pasta: ");
-			String novaDataCriacao = in.nextLine();
+			if (n < aux.get(x).getNumPastas() && n >= 0) {
+				in.nextLine(); // Limpar o buffer
 
-			aux.get(n).getPasta(numeroPasta).setTituloPasta(novoTitulo);
-			aux.get(n).getPasta(numeroPasta).setDtCriacaoPasta(novaDataCriacao);
+				System.out.print("Informe o novo título da pasta: ");
+				String novoTitulo = in.nextLine();
 
-			System.out.println("Pasta editada com sucesso!");
+				System.out.print("Informe a nova data de criação da pasta: ");
+				String novaDataCriacao = in.nextLine();
+
+				Pasta p = new Pasta(novoTitulo, novaDataCriacao);
+
+				aux.get(x).setPasta(n, p);
+				System.out.println("Pasta editada com sucesso!");
+			} else {
+				System.out.println("Número de pasta inválido!");
+			}
 		} else {
-			System.out.println("Número de pasta inválido!");
+			System.out.println("Número inválido!");
 		}
+
+
 	}
 
 
