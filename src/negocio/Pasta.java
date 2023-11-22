@@ -15,9 +15,6 @@ public class Pasta {
 		this.dtCriacaoPasta = d;
 		this.notas = new ArrayList<>(1500);
 	}
-	
-	public Pasta(String nomePasta) {
-    }
 
     //Métodos getters e setters
 	public String getTituloPasta() {
@@ -139,10 +136,6 @@ public class Pasta {
 
 			notas.add(i, n);
 		}
-	}
-
-	public Nota getNota(String tituloNota) {
-		return null;
 	}
 	
 }
